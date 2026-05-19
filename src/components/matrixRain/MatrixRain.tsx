@@ -9,43 +9,68 @@ export function MatrixRain() {
         const ctx = canvas.getContext('2d')
         if (!ctx) return
 
-        // 1. fazer o canvas ocupar a tela toda
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
 
-        // 2. definir o tamanho da fonte e calcular colunas
         const fontSize = 16
         const columns = Math.floor(canvas.width / fontSize)
+        const trailLength = 20
 
-        // 3. criar array de posições Y (uma por coluna)
-        const drops: number[] = Array(columns).fill(1)
+        // helper para sortear caractere
+        const randomChar = () =>
+            String.fromCharCode(0x30A0 + Math.random() * 96)
+
+        // cada coluna: posição, velocidade, e os caracteres do rastro
+        const drops = Array.from({ length: columns }, () => ({
+            y: Math.random() * canvas.height / fontSize,
+            speed: 0.3 + Math.random() * 0.4,
+            chars: Array.from({ length: trailLength }, randomChar),
+        }))
+
         const draw = () => {
-            // 1. fundo preto semi-transparente (cria o rastro)
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.05)'
+            ctx.fillStyle = '#0a0a0a'
             ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-            // 2. cor e fonte dos caracteres
-            ctx.fillStyle = '#00ff88'
             ctx.font = `${fontSize}px monospace`
 
-            // 3. desenha um caractere em cada coluna
             for (let i = 0; i < drops.length; i++) {
-                const char = String.fromCharCode(0x30A0 + Math.random() * 96)
-                ctx.fillText(char, i * fontSize, drops[i] * fontSize)
+                const drop = drops[i]
 
-                // 4. reinicia a coluna aleatoriamente quando chega no fim
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0
+                for (let j = 0; j < trailLength; j++) {
+                    const y = (drop.y - j) * fontSize
+                    if (y < 0) continue
+
+                    if (j === 0) {
+                        ctx.fillStyle = '#ffffff'
+                    } else if (j === 1) {
+                        ctx.fillStyle = '#d1ffe6'
+                    } else if (j === 2) {
+                        ctx.fillStyle = '#88ffbb'
+                    } else {
+                        const opacity = 1 - (j - 2) / (trailLength - 2)
+                        ctx.fillStyle = `rgba(0, 255, 136, ${opacity})`
+                    }
+
+                    ctx.fillText(drop.chars[j], i * fontSize, y)
                 }
-                drops[i]++
+
+                drop.y += drop.speed
+
+                // a cada movimento, "empurra" o array — novo caractere na frente,
+                // os outros vão pra trás
+                if (Math.floor(drop.y) > Math.floor(drop.y - drop.speed)) {
+                    drop.chars.unshift(randomChar())
+                    drop.chars.pop()
+                }
+
+                if ((drop.y - trailLength) * fontSize > canvas.height) {
+                    drop.y = 0
+                    drop.speed = 0.3 + Math.random() * 0.4
+                }
             }
         }
 
         const interval = setInterval(draw, 50)
-
         return () => clearInterval(interval)
-
-        
     }, [])
 
     return (
