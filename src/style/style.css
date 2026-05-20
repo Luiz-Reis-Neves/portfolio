@@ -195,3 +195,24 @@ body {
     0 0 60px rgba(0, 255, 136, 0.05),        /* brilho distante */
     0 20px 40px rgba(0, 0, 0, 0.5);          /* sombra de profundidade */
 }
+
+
+/* não esquecer de comentar daqui para baixo */
+
+.card-hover {
+  transition: transform 0.3s ease-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+}
+
+
+
+
+.photo-glow {
+  box-shadow: 
+    0 0 0 1px #1a3a2a,
+    0 0 30px rgba(0, 255, 136, 0.15),
+    0 0 60px rgba(0, 255, 136, 0.05);
+}

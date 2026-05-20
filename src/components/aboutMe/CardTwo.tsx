@@ -2,7 +2,7 @@ import { FolderGit2 } from 'lucide-react'
 
 export function CardTwo() {
     return (
-        <div className="bg-black/30 border border-[var(--color-border)] rounded-xl p-5 w-[300px] h-[200px] terminal-card">
+        <div className="bg-black/30 border border-[var(--color-border)] rounded-xl p-5 w-[300px] h-[200px] terminal-card card-hover">
             <div className="flex items-center gap-2 mb-3">
                 <FolderGit2 size={18} className="text-[var(--color-purple)]" />
                 <span className="text-[var(--color-purple)] font-bold text-sm">Projects</span>
