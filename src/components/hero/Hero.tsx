@@ -10,7 +10,7 @@ export function Hero() {
                 <div className="max-w-6xl mx-auto px-6">
                    <div className="w-[100%] min-h-screen flex">
                         <Apresentation/>
-                        <Terminal/>
+                        {/* <Terminal/> */}
                    </div>
                 </div>
 

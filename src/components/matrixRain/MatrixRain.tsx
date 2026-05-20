@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react'
+import gsap from 'gsap'
 
 export function MatrixRain() {
     const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -20,12 +21,22 @@ export function MatrixRain() {
         const randomChar = () =>
             String.fromCharCode(0x30A0 + Math.random() * 96)
 
-        // cada coluna: posição, velocidade, e os caracteres do rastro
         const drops = Array.from({ length: columns }, () => ({
-            y: Math.random() * canvas.height / fontSize,
-            speed: 0.3 + Math.random() * 0.4,
+            y: 0,
+            speed: 0.5,  // todas iguais no início
             chars: Array.from({ length: trailLength }, randomChar),
         }))
+
+        // depois de 3 segundos, dá velocidade aleatória pra cada coluna
+        setTimeout(() => {
+            drops.forEach(drop => {
+                gsap.to(drop, {
+                    speed: 0.3 + Math.random() * 0.4,
+                    duration: 2,
+                    ease: 'power2.out',
+                })
+            })
+        }, 3000)
 
         const draw = () => {
             ctx.fillStyle = '#0a0a0a'
