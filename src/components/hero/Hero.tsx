@@ -8,8 +8,8 @@ export function Hero() {
             <MatrixRain />
             <div className="min-h-screen w-full">
 
-                <div className="max-w-6xl mx-auto px-6">
-                   <div className="w-[100%] min-h-screen flex">
+                <div className="max-w-6xl mx-auto">
+                   <div className="w-[100%] min-h-screen flex flex-col md:flex-row gap-8 p-6 md:p-0">
                         <Apresentation/>
                         <Terminal/>
                    </div>

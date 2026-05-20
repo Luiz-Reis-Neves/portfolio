@@ -1,4 +1,6 @@
 import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+
 
 const phase1 = 'Wake up...'
 const phase2 = 'The Matrix has you.'
@@ -11,9 +13,21 @@ const phase3 = `const developer = {
 };`
 
 export function Terminal() {
+    const terminalRef = useRef(null)
+    
     const textRef = useRef<HTMLPreElement>(null)
 
     useEffect(() => {
+        gsap.set(terminalRef.current, { opacity: 0, x: 40 })
+
+        gsap.to(terminalRef.current, {
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            delay: 0.5
+        })
+
         if (!textRef.current) return
 
         const el = textRef.current
@@ -46,6 +60,7 @@ export function Terminal() {
             new Promise((resolve) => setTimeout(resolve, ms))
 
         const run = async () => {
+            await wait(800)
             await type(phase1)
             await wait(2000)
             await erase()
@@ -63,8 +78,8 @@ export function Terminal() {
     }, [])
 
     return (
-        <div className="w-[50%] flex-1 flex items-center justify-center">
-            <div className="w-[90%] h-[350px] rounded-2xl bg-black/80 terminal-card">
+        <div className="w-full md:w-[50%] flex-1 flex items-center justify-center">
+            <div ref={terminalRef} className="w-[100%] md:w-[90%] h-[350px] rounded-2xl bg-black/80 terminal-card">
                 <div className="w-full h-[60px] px-4 flex items-center justify-between bg-[#171313] rounded-t-2xl">
                     <div className="w-[60px] h-[30px] flex items-center justify-center gap-2">
                         <div className="w-[14px] h-[14px] rounded-full bg-[#ff5f57]"></div>

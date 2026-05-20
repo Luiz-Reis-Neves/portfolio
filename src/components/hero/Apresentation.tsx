@@ -23,10 +23,10 @@ export function Apresentation() {
     }, [])
 
     return (
-        <div className="w-[50%] flex flex-1 flex-col justify-center gap-4">
+        <div className="w-full md:w-[50%] flex flex-1 flex-col justify-center gap-10 md:gap-4 pt-16 md:pt-0 px-0 md:px-0">
             <div ref={ref1} >
                 <h2 className="text-[var(--color-white)] font-bold">Hello! I'm</h2>
-                <h1 className="font-[family-name:var(--font-display)] text-7xl font-bold text-[#00ff88]">Luiz Reis Neves</h1>
+               <h1 className="font-[family-name:var(--font-display)] text-5xl md:text-7xl font-bold text-[#00ff88]">Luiz Reis Neves</h1>
             </div>
             <div ref={ref2} >
                 <h1 className="font-[family-name:var(--font-display)] text-[var(--color-white)] text-2xl">Fullstack Developer</h1>
