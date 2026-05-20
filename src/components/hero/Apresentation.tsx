@@ -6,7 +6,7 @@ export function Apresentation() {
         <div className="w-[50%] flex flex-1 flex-col justify-center gap-4">
             <div>
                 <h2 className="text-[var(--color-white)] font-bold">Hello! I'm</h2>
-                <h1 className="font-[family-name:var(--font-display)] text-7xl font-bold text-[var(--color-title)]">Luiz Reis Neves</h1>
+                <h1 className="font-[family-name:var(--font-display)] text-7xl font-bold text-[#00ff88]">Luiz Reis Neves</h1>
             </div>
             <div>
                 <h1 className="font-[family-name:var(--font-display)] text-[var(--color-white)] text-2xl">Fullstack Developer</h1>

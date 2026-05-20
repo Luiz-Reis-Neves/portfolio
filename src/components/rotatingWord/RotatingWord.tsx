@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 
-const words = ['Engineer', 'Developer', 'Architect']
+const words = ['Engineer.', 'Developer.', 'Architect.']
 
 export function RotatingWord() {
   const [index, setIndex] = useState(0)
