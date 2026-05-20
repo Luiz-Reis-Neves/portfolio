@@ -2,7 +2,7 @@ import { CardOne } from "./CardOne.tsx"
 import { CardTwo } from "./CardTwo.tsx"
 export function Resume() {
     return (
-        <div className="w-[60%] h-screen border flex flex-col gap-5">
+        <div className="w-[60%] h-screen flex flex-col gap-5">
             <div className="h-[20%] w-full pl-10 pt-5">
                 <h1 className="text-[var(--color-white)]">About</h1>
                 <h2 className="text-6xl font-[family-name:var(--font-display)]">Fullstack Developer</h2>
@@ -18,7 +18,7 @@ export function Resume() {
                     sees to what runs behind the scenes. I believe good code is code that works,
                     that scales and makes sense to whoever maintains it.</p>
             </div>
-            <div className="h-[40%] w-[100%] border">
+            <div className="h-[40%] w-[100%] flex justify-center items-center gap-3">
                 <CardOne/>
                 <CardTwo/>
             </div>
