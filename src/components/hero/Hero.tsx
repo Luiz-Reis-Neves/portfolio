@@ -8,7 +8,7 @@ export function Hero() {
             <div className="min-h-screen w-full">
 
                 <div className="max-w-6xl mx-auto px-6">
-                   <div className="w-[100%] min-h-screen flex border">
+                   <div className="w-[100%] min-h-screen flex">
                         <Apresentation/>
                         <Terminal/>
                    </div>

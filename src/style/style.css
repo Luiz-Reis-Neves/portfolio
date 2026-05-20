@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import "tailwindcss";
-
+@import 'tailwindcss';
 
 body {
   background-color: var(--color-bg);
@@ -9,11 +8,11 @@ body {
 }
 
 :root {
-    /* style fonts */
+  /* style fonts */
   --font-display: 'VT323', monospace;
   --font-body: 'Space Mono', monospace;
 
-    /* colors */
+  /* colors */
   --color-bg: #0a0a0a;
   --color-surface: #0d0d1a;
   --color-border: #1a3a2a;
@@ -21,14 +20,19 @@ body {
   --color-title: #00cc6a;
   --color-text: #00ff88;
   --color-purple: #a78bfa;
-  --color-white: #e2e8f0;
+  --color-white: #ffffff;
   --color-muted: #6b7280;
 }
 
 /* animação piscante */
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .nav-blink:hover {
@@ -37,14 +41,19 @@ body {
 
 /* efect in border */
 @keyframes border-run {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
 }
 
 .border-glow {
   position: relative;
   border: none !important;
-  background: linear-gradient(90deg, #1a3a2a, #00ff88, #1a3a2a, #00ff88) border-box;
+  background: linear-gradient(90deg, #1a3a2a, #00ff88, #1a3a2a, #00ff88)
+    border-box;
   background-size: 200% 100%;
   animation: border-run 4s linear infinite;
   padding: 1px;
@@ -58,4 +67,79 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+/* efect in border */
+
+/* Efect in button begin */
+.btn-fill {
+  position: relative;
+  overflow: hidden;
+  background: #00ff88;
+  color: #0a0a0a;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-fill::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  background: #00cc6a;
+  transition: height 0.3s ease-out;
+  z-index: 0;
+}
+
+.btn-fill:hover::before {
+  height: 100%;
+}
+
+.btn-fill span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Efect in button end */
+
+.btn-outline {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  color: var(--color-text);
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--color-text);
+  cursor: pointer;
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  background: var(--color-text);
+  transition: height 0.3s ease-out;
+  z-index: 0;
+}
+
+.btn-outline:hover::before {
+  height: 100%;
+}
+
+.btn-outline:hover span {
+  color: #0a0a0a;
+}
+
+.btn-outline span {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease-out;
 }
