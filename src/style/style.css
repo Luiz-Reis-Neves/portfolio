@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import 'tailwindcss';
 
-*{
+* {
   box-sizing: border-box;
+  translate: revert;
+  rotate: revert;
+  scale: revert;
 }
+
+
 
 body {
   background-color: var(--color-bg);
