@@ -1,6 +1,16 @@
+/* ============================================
+   IMPORTS
+   Fontes do Google e Tailwind CSS
+   ============================================ */
 @import url('https://fonts.googleapis.com/css2?family=VT323&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import 'tailwindcss';
 
+/* ============================================
+   RESET GLOBAL
+   box-sizing padrão + revert das propriedades
+   individuais de transform do Tailwind v4
+   (necessário para o GSAP funcionar corretamente)
+   ============================================ */
 * {
   box-sizing: border-box;
   translate: revert;
@@ -8,66 +18,80 @@
   scale: revert;
 }
 
-
-
+/* ============================================
+   BASE
+   Estilo global do body — fundo, cor e fonte
+   ============================================ */
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
 }
 
+/* ============================================
+   VARIÁVEIS CSS
+   Tokens de design — fontes e cores do projeto
+   ============================================ */
 :root {
-  /* style fonts */
-  --font-display: 'VT323', monospace;
-  --font-body: 'Space Mono', monospace;
+  /* Fontes */
+  --font-display: 'VT323', monospace;  /* títulos — estilo terminal/matrix */
+  --font-body: 'Space Mono', monospace; /* corpo — monospace legível */
 
-  /* colors */
-  --color-bg: #0a0a0a;
-  --color-surface: #0d0d1a;
-  --color-border: #1a3a2a;
+  /* Backgrounds */
+  --color-bg: #0a0a0a;       /* fundo principal da página */
+  --color-surface: #0d0d1a;  /* fundo de cards e superfícies */
 
-  --color-title: #00cc6a;
-  --color-text: #00ff88;
-  --color-purple: #a78bfa;
-  --color-white: #ffffff;
-  --color-muted: #6b7280;
+  /* Bordas */
+  --color-border: #1a3a2a;   /* verde escuro sutil */
+
+  /* Texto */
+  --color-title: #00cc6a;    /* títulos — verde médio */
+  --color-text: #00ff88;     /* texto principal — verde neon */
+  --color-purple: #a78bfa;   /* destaque — palavra animada */
+  --color-white: #ffffff;    /* texto secundário */
+  --color-muted: #6b7280;    /* texto discreto */
 }
 
-/* animação piscante */
+/* ============================================
+   ANIMAÇÃO — PISCAR
+   Usada no cursor do terminal e no hover
+   dos links da navbar
+   ============================================ */
 @keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
+/* hover nos links da navbar — pisca o texto */
 .nav-blink:hover {
   animation: blink 0.7s step-end infinite;
 }
 
-/* efect in border */
-@keyframes border-run {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
+/* cursor do terminal — pisca infinitamente */
+.cursor-blink {
+  animation: blink 1s step-end infinite;
 }
 
+/* ============================================
+   ANIMAÇÃO — BORDA CORRENDO
+   Brilho verde percorrendo a borda da navbar
+   ============================================ */
+@keyframes border-run {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* container externo — tem o gradiente animado */
 .border-glow {
   position: relative;
   border: none !important;
-  background: linear-gradient(90deg, #1a3a2a, #00ff88, #1a3a2a, #00ff88)
-    border-box;
+  background: linear-gradient(90deg, #1a3a2a, #00ff88, #1a3a2a, #00ff88) border-box;
   background-size: 200% 100%;
   animation: border-run 4s linear infinite;
-  padding: 1px;
+  padding: 1px; /* espessura da borda */
 }
 
+/* container interno — cobre o fundo, deixa só a borda visível */
 .border-glow-inner {
   background: #0a0a0a;
   border-radius: inherit;
@@ -77,9 +101,12 @@ body {
   align-items: center;
   justify-content: center;
 }
-/* efect in border */
 
-/* Efect in button begin */
+/* ============================================
+   BOTÃO PREENCHIDO (btn-fill)
+   Fundo verde — animação de preenchimento
+   de baixo pra cima no hover
+   ============================================ */
 .btn-fill {
   position: relative;
   overflow: hidden;
@@ -99,7 +126,7 @@ body {
   bottom: 0;
   width: 100%;
   height: 0;
-  background: #00cc6a;
+  background: #00cc6a; /* verde mais escuro no hover */
   transition: height 0.3s ease-out;
   z-index: 0;
 }
@@ -110,11 +137,14 @@ body {
 
 .btn-fill span {
   position: relative;
-  z-index: 1;
+  z-index: 1; /* texto fica acima da animação */
 }
 
-/* Efect in button end */
-
+/* ============================================
+   BOTÃO OUTLINE (btn-outline)
+   Fundo transparente com borda — preenche
+   de baixo pra cima no hover
+   ============================================ */
 .btn-outline {
   position: relative;
   overflow: hidden;
@@ -144,7 +174,7 @@ body {
 }
 
 .btn-outline:hover span {
-  color: #0a0a0a;
+  color: #0a0a0a; /* texto escurece quando o fundo preenche */
 }
 
 .btn-outline span {
@@ -153,25 +183,15 @@ body {
   transition: color 0.3s ease-out;
 }
 
-
-
-
-
-
-
+/* ============================================
+   TERMINAL — SOMBRA 3D
+   Box-shadow em camadas cria profundidade
+   e brilho verde ao redor do terminal
+   ============================================ */
 .terminal-card {
   box-shadow: 
-    0 0 0 1px #1a3a2a,
-    0 0 30px rgba(0, 255, 136, 0.15),
-    0 0 60px rgba(0, 255, 136, 0.05),
-    0 20px 40px rgba(0, 0, 0, 0.5);
-}
-
-
-
-
-
-
-.cursor-blink {
-  animation: blink 1s step-end infinite;
+    0 0 0 1px #1a3a2a,                      /* borda sutil */
+    0 0 30px rgba(0, 255, 136, 0.15),        /* brilho próximo */
+    0 0 60px rgba(0, 255, 136, 0.05),        /* brilho distante */
+    0 20px 40px rgba(0, 0, 0, 0.5);          /* sombra de profundidade */
 }
