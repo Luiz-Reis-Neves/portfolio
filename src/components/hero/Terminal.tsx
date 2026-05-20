@@ -14,7 +14,7 @@ const phase3 = `const developer = {
 
 export function Terminal() {
     const terminalRef = useRef(null)
-    
+
     const textRef = useRef<HTMLPreElement>(null)
 
     useEffect(() => {
@@ -27,6 +27,40 @@ export function Terminal() {
             ease: 'power2.out',
             delay: 0.5
         })
+
+        const terminal = terminalRef.current
+        if (!terminal) return
+
+        const handleMouseMove = (e: MouseEvent) => {
+            const rect = terminal.getBoundingClientRect()
+
+            const centerX = rect.left + rect.width / 2
+            const centerY = rect.top + rect.height / 2
+
+            const rotateY = ((e.clientX - centerX) / rect.width) * 15
+            const rotateX = ((e.clientY - centerY) / rect.height) * -15
+
+            gsap.to(terminal, {
+                rotateX,
+                rotateY,
+                duration: 0.5,
+                ease: 'power2.out',
+                transformPerspective: 800,
+            })
+        }
+
+        const handleMouseLeave = () => {
+            gsap.to(terminal, {
+                rotateX: 0,
+                rotateY: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+            })
+        }
+
+        terminal.addEventListener('mousemove', handleMouseMove)
+        terminal.addEventListener('mouseleave', handleMouseLeave)
+
 
         if (!textRef.current) return
 
@@ -74,7 +108,11 @@ export function Terminal() {
 
         run()
 
-        return () => { cancelled = true }
+        return () => {
+            cancelled = true
+            terminal.removeEventListener('mousemove', handleMouseMove)
+            terminal.removeEventListener('mouseleave', handleMouseLeave)
+        }
     }, [])
 
     return (
