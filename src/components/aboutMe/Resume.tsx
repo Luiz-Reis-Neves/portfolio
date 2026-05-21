@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react"
 import { CardTwo } from "./CardTwo.tsx"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
+import type { LucideIcon } from 'lucide-react'
+import {User, Code2} from 'lucide-react'
 export function Resume() {
     const ref1 = useRef(null)
     const ref2 = useRef(null)
@@ -28,7 +30,10 @@ export function Resume() {
     return (
         <div className="w-[60%] h-screen flex flex-col gap-5">
             <div ref={ref1} className="h-[20%] w-full pl-10 pt-5">
+                <div className="flex gap-1 items-center">
+                    <User size={16} />
                 <h1 className="text-[var(--color-white)]">About</h1>
+                </div>
                 <h2 className="text-6xl font-[family-name:var(--font-display)]">Fullstack Developer</h2>
             </div>
             <div ref={ref2} className="h-[40%] w-[90%] flex justify-center pl-10">
