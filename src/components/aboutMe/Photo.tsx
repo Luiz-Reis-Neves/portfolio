@@ -4,10 +4,10 @@ import ScrollTrigger from "gsap/ScrollTrigger"
 import gsap from 'gsap'
 
 
-export function Photo(){
-     const ref1 = useRef(null)
+export function Photo() {
+    const ref1 = useRef(null)
 
-     gsap.registerPlugin(ScrollTrigger)
+    gsap.registerPlugin(ScrollTrigger)
 
     useEffect(() => {
         gsap.set([ref1.current], { opacity: 0, x: -40 })
@@ -25,9 +25,13 @@ export function Photo(){
         })
     }, [])
 
-    return(
+    return (
         <div ref={ref1} className="w-[40%] h-screen flex justify-center items-center">
-            <img className='w-[80%] h-[90%] rounded-2xl photo-glow' src={perfil} alt="perfil" />
+            <div className="border-glow rounded-2xl w-[80%] h-[90%]">
+                <div className="border-glow-inner rounded-2xl">
+                    <img className='w-full h-full rounded-2xl object-cover' src={perfil} alt="perfil" />
+                </div>
+            </div>
         </div>
     )
 }

@@ -3,8 +3,7 @@ import { useEffect, useRef } from "react"
 import { CardTwo } from "./CardTwo.tsx"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
-import type { LucideIcon } from 'lucide-react'
-import {User, Code2} from 'lucide-react'
+import {User} from 'lucide-react'
 export function Resume() {
     const ref1 = useRef(null)
     const ref2 = useRef(null)
