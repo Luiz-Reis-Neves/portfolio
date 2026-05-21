@@ -12,7 +12,7 @@ export function Navbar() {
   }
 
   return (
-    <div className="w-full h-[80px] fixed bottom-0 left-0 flex justify-center items-center">
+    <div className="w-full h-[80px] fixed z-50 bottom-0 left-0 flex justify-center items-center">
       <div className="border-glow w-[90%] max-w-[500px] xl:max-w-[500px] h-[60px] rounded-2xl">
         <div className="border-glow-inner rounded-2xl">
           <ul className="w-full flex justify-between items-center h-full p-5">
