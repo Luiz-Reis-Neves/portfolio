@@ -23,17 +23,17 @@ export function Apresentation() {
     }, [])
 
     return (
-        <div className="w-full md:w-[50%] flex flex-1 flex-col justify-center gap-10 md:gap-4 pt-16 md:pt-0 px-0 md:px-0">
-            <div ref={ref1} >
-                <h2 className="text-[var(--color-white)] font-bold">Hello! I'm</h2>
-               <h1 className="font-[family-name:var(--font-display)] text-5xl md:text-7xl font-bold text-[#00ff88]">Luiz Reis Neves</h1>
+        <div className="w-full flex flex-1 flex-col justify-center gap-0 pt-5 px-0 sm:w-[90%] lg:w-[50%] lg:gap-4 lg:pt-0 lg:px-0">
+            <div ref={ref1} className="" >
+                <h2 className="text-[var(--color-white)] text-[20px] font-bold">Hello! I'm</h2>
+               <h1 className="font-[family-name:var(--font-display)] leading-none text-[54px] lg:text-7xl font-bold text-[#00ff88] sm:text-8xl">Luiz Reis Neves</h1>
             </div>
             <div ref={ref2} >
-                <h1 className="font-[family-name:var(--font-display)] text-[var(--color-white)] text-2xl">Fullstack Developer</h1>
-                <p className="text-[var(--color-white)] font-bold">A professional {<RotatingWord />} </p>
-                <p className="text-[var(--color-white)] font-bold">crafting seamless experiences from frontend to backend.</p>
+                <h1 className="font-[family-name:var(--font-display)] text-[var(--color-white)] font-bold text-3xl">Fullstack Developer</h1>
+                <p className="text-[var(--color-white)] sm:font-bold sm:text-2xl lg:font-normal lg:text-[20px]">A professional {<RotatingWord />} </p>
+                <p className="text-[var(--color-white)] sm:font-bold sm:text-2xl lg:font-normal lg:text-[20px]">crafting seamless experiences from frontend to backend.</p>
             </div>
-            <div ref={ref3} className="flex gap-5">
+            <div ref={ref3} className="flex gap-5 mt-3">
                 <BtnContact />
                 <BtnResume />
             </div>

@@ -4,12 +4,14 @@ import { CardTwo } from "./CardTwo.tsx"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import {User} from 'lucide-react'
+
+gsap.registerPlugin(ScrollTrigger)
+
 export function Resume() {
     const ref1 = useRef(null)
     const ref2 = useRef(null)
     const ref3 = useRef(null)
 
-    gsap.registerPlugin(ScrollTrigger)
 
     useEffect(() => {
         gsap.set([ref1.current, ref2.current, ref3.current], { opacity: 0, x: 40 })
@@ -27,15 +29,15 @@ export function Resume() {
         })
     }, [])
     return (
-        <div className="w-[60%] h-screen flex flex-col gap-5">
-            <div ref={ref1} className="h-[20%] w-full pl-10 pt-5">
+        <div className="w-[100%] h-auto flex flex-col gap-3 lg:w-[60%] lg:h-screen lg:gap-5">
+            <div ref={ref1} className="h-[20%] w-full md:pl-10 md:pt-5">
                 <div className="flex gap-1 items-center">
                     <User size={16} />
                 <h1 className="text-[var(--color-white)]">About</h1>
                 </div>
-                <h2 className="text-6xl font-[family-name:var(--font-display)]">Fullstack Developer</h2>
+                <h2 className="text-7xl flex text-center font-[family-name:var(--font-display)] md:text-6xl md:text-end">Fullstack Developer</h2>
             </div>
-            <div ref={ref2} className="h-[40%] w-[90%] flex justify-center pl-10">
+            <div ref={ref2} className="w-[100%] h-auto flex justify-center md:h-[40%] md:w-[90%] md:pl-10">
                 <p className="text-justify">I'm Luiz Reis Neves, a Fullstack developer in constant evolution,
                     focused on building modern and functional interfaces with React and TypeScript.
                     I currently develop real projects applying what I learn — turning
@@ -46,7 +48,7 @@ export function Resume() {
                     sees to what runs behind the scenes. I believe good code is code that works,
                     that scales and makes sense to whoever maintains it.</p>
             </div>
-            <div ref={ref3} className="h-[40%] w-[100%] flex justify-center items-center gap-3">
+            <div ref={ref3} className="w-[100%] h-auto flex flex-col justify-center items-center gap-3 md:w-[100%] md:h-[40%] md:flex-row">
                 <CardOne />
                 <CardTwo />
             </div>

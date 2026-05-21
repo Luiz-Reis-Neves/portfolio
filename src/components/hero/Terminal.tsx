@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
+gsap.registerPlugin()
 
 const phase1 = 'Wake up...'
 const phase2 = 'The Matrix has you.'
@@ -11,6 +12,8 @@ const phase3 = `const developer = {
   learning: 'Always',
   motto: "Code. Learn. Evolve."
 };`
+
+
 
 export function Terminal() {
     const terminalRef = useRef(null)
@@ -116,7 +119,7 @@ export function Terminal() {
     }, [])
 
     return (
-        <div className="w-full md:w-[50%] flex-1 flex items-center justify-center">
+        <div className="w-full sm:w-[70%] lg:w-[50%] flex-1 flex items-center justify-center">
             <div ref={terminalRef} className="w-[100%] md:w-[90%] h-[350px] rounded-2xl bg-black/80 terminal-card">
                 <div className="w-full h-[60px] px-4 flex items-center justify-between bg-[#171313] rounded-t-2xl">
                     <div className="w-[60px] h-[30px] flex items-center justify-center gap-2">
