@@ -10,16 +10,16 @@ type Props = {
 }
 
 const skills = [
-    { name: 'HTML', text: '[SKILL DETECTED] HTML................OK', learning: false },
-    { name: 'CSS', text: '[SKILL DETECTED] CSS.................OK', learning: false },
-    { name: 'React', text: '[SKILL DETECTED] REACT...............OK', learning: false },
-    { name: 'Tailwind', text: '[SKILL DETECTED] TAILWIND............OK', learning: false },
-    { name: 'TypeScript', text: '[SKILL DETECTED] TYPESCRIPT..........OK', learning: false },
-    { name: 'Git/GitHub', text: '[SKILL DETECTED] GIT/GITHUB..........OK', learning: false },
-    { name: 'GSAP', text: '[SKILL DETECTED] GSAP..........LEARNING', learning: true },
-    { name: 'Node.js', text: '[SKILL DETECTED] NODE.JS.......LEARNING', learning: true },
-    { name: 'API REST', text: '[SKILL DETECTED] APIREST.......LEARNING', learning: true },
-    { name: 'MySQL', text: '[SKILL DETECTED] MYSQL.........LEARNING', learning: true },
+    { name: 'HTML', text: '[SKILL DETECTED] HTML..............OK', learning: false },
+    { name: 'CSS', text: '[SKILL DETECTED] CSS...............OK', learning: false },
+    { name: 'TypeScript', text: '[SKILL DETECTED] TYPESCRIPT........OK', learning: false },
+    { name: 'Tailwind', text: '[SKILL DETECTED] TAILWIND..........OK', learning: false },
+    { name: 'React', text: '[SKILL DETECTED] REACT.............OK', learning: false },
+    { name: 'Git/GitHub', text: '[SKILL DETECTED] GIT/GITHUB........OK', learning: false },
+    { name: 'GSAP', text: '[SKILL DETECTED] GSAP........LEARNING', learning: true },
+    { name: 'Node.js', text: '[SKILL DETECTED] NODE.JS.....LEARNING', learning: true },
+    { name: 'API REST', text: '[SKILL DETECTED] APIREST.....LEARNING', learning: true },
+    { name: 'MySQL', text: '[SKILL DETECTED] MYSQL.......LEARNING', learning: true },
 ]
 
 const PROMPT = '<span style="color:#006633">C:\\&gt;</span> '
@@ -113,7 +113,7 @@ export function TerminalSkills({ onSkillDetected }: Props) {
     }, [])
 
     return (
-        <div className="w-full h-[50%] sm:w-[90%] lg:w-[40%] lg:h-auto p-6 border">
+        <div className="w-full h-[50%] sm:w-[90%] lg:w-[40%] lg:h-auto p-6">
             <div
                 ref={containerRef}
                 className="text-[var(--color-green)] font-mono text-sm leading-loose whitespace-pre-wrap"

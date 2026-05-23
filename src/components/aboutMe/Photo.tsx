@@ -26,8 +26,8 @@ export function Photo() {
     }, [])
 
     return (
-        <div ref={ref1} className="w-[100%] h-screen flex justify-center items-center lg:w-[40%]">
-            <div className="w-[90%] h-[90%] border-glow rounded-2xl sm:w-[60%] sm:h-[80%] lg:w-[80%]">
+        <div ref={ref1} className="w-[100%] h-[40%] flex justify-center items-center lg:w-[40%]">
+            <div className="w-[90%] h-[90%] border-glow rounded-2xl sm:w-[50%] sm:h-[50%] lg:w-[80%]">
                 <div className="border-glow-inner rounded-2xl">
                     <img className='w-full h-full rounded-2xl object-cover' src={perfil} alt="perfil" />
                 </div>

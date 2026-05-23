@@ -11,8 +11,8 @@ export function Skills() {
     
     return (
         <div className="min-h-screen w-full">
-            <div className="max-w-6xl mx-auto">
-                <div className="w-[100%] h-auto flex flex-col gap-1 p-4 sm:flex-row lg:h-screen lg:flex-row lg:p-0">
+            <div className="max-w-6xl mx-auto min-h-screen">
+                <div className="w-[100%] h-auto flex flex-col gap-1 p-4 sm:flex-row sm:h-[650px] lg:h-screen lg:flex-row lg:p-0">
                     <TerminalSkills onSkillDetected={handleSkillDetected} />
                     <IconsPanel detectedSkills={detectedSkills} />
                 </div>

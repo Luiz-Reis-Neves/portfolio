@@ -29,7 +29,7 @@ export function Resume() {
         })
     }, [])
     return (
-        <div className="w-[100%] h-auto flex flex-col gap-3 lg:w-[60%] lg:h-screen lg:gap-5">
+        <div className="w-[100%] h-[60%] flex flex-col gap-3 sm:mt-6 lg:w-[60%] lg:h-screen lg:gap-5">
             <div ref={ref1} className="h-[20%] w-full md:pl-10 md:pt-5">
                 <div className="flex gap-1 items-center">
                     <User size={16} />
