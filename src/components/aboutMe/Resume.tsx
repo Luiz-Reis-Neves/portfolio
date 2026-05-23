@@ -29,15 +29,15 @@ export function Resume() {
         })
     }, [])
     return (
-        <div className="w-[100%] h-[60%] flex flex-col gap-3 sm:mt-6 lg:w-[60%] lg:h-screen lg:gap-5">
-            <div ref={ref1} className="h-[20%] w-full md:pl-10 md:pt-5">
+        <div className="w-[100%] h-[60%] flex flex-col gap-3 sm:justify-center sm:gap-5 sm:items-center lg:w-[60%] lg:h-screen lg:gap-5">
+            <div ref={ref1} className="w-[100%] h-[auto] sm:w-[90%]">
                 <div className="flex gap-1 items-center">
                     <User size={16} />
                 <h1 className="text-[var(--color-white)]">About</h1>
                 </div>
-                <h2 className="text-7xl flex text-center font-[family-name:var(--font-display)] md:text-6xl md:text-end">Fullstack Developer</h2>
+                <h2 className="text-7xl flex text-center font-[family-name:var(--font-display)] sm:text-6xl sm:text-end">Fullstack Developer</h2>
             </div>
-            <div ref={ref2} className="w-[100%] h-auto flex justify-center md:h-[40%] md:w-[90%] md:pl-10">
+            <div ref={ref2} className="w-[100%] h-auto flex justify-center sm:w-[90%] sm:h-[auto]">
                 <p className="text-justify">I'm Luiz Reis Neves, a Fullstack developer in constant evolution,
                     focused on building modern and functional interfaces with React and TypeScript.
                     I currently develop real projects applying what I learn — turning
@@ -48,7 +48,7 @@ export function Resume() {
                     sees to what runs behind the scenes. I believe good code is code that works,
                     that scales and makes sense to whoever maintains it.</p>
             </div>
-            <div ref={ref3} className="w-[100%] h-auto flex flex-col justify-center items-center gap-3 md:w-[100%] md:h-[40%] md:flex-row">
+            <div ref={ref3} className="w-[100%] h-auto flex flex-col justify-center items-center gap-3 sm:w-[100%] sm:h-auto sm:flex-row">
                 <CardOne />
                 <CardTwo />
             </div>

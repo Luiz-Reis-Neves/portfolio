@@ -2,7 +2,7 @@ import { GraduationCap } from 'lucide-react'
 
 export function CardOne() {
     return (
-        <div className="bg-black/30 border border-[var(--color-border)] rounded-xl p-5 w-[300px] h-[170px] terminal-card card-hover">
+        <div className="w-[300px] h-[170px] bg-black/30 border border-[var(--color-border)] rounded-xl p-5 terminal-card card-hover">
             <div className="flex items-center gap-2 mb-1">
                 <GraduationCap size={18} className="text-[var(--color-purple)]" />
                 <span className="text-[var(--color-purple)] font-bold text-sm">Education</span>
