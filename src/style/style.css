@@ -340,3 +340,31 @@ body {
         0 0 0 1px #1a3a2a,
         0 20px 40px rgba(0, 0, 0, 0.5);
 }
+
+
+
+.project-img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-img-wrapper img {
+    transition: transform 0.5s ease-out;
+}
+
+.project-img-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+.project-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--color-green);
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    border-radius: inherit;
+}
+
+.project-img-wrapper:hover .project-img-overlay {
+    opacity: 0.08;
+}

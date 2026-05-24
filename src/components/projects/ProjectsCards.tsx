@@ -58,12 +58,15 @@ export function ProjectCards({ id, image, name, description, stack, status, live
     return (
         <div ref={cardRef}
             onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave} className='w-[100%] h-full border border-gray-500 rounded-2xl flex flex-col  project-card'>
+            onMouseLeave={handleMouseLeave} className='w-[100%] h-full border border-gray-500 rounded-2xl flex flex-col project-card'>
 
             {/* Imagem do projeto */}
-            <div className="w-[100%] h-[200px] border-b border-gray-500">
-                <img className='w-full h-full rounded-t-2xl' src={image} alt="" />
+            <div className="project-img-wrapper w-[100%] h-[200px] border-b border-gray-500">
+                <img className='w-full h-full rounded-t-2xl object-cover' src={image} alt={name} />
+                <div className="project-img-overlay" />
             </div>
+
+
 
             {/* Conteúdo do card */}
             <div className='flex flex-col gap-3 p-5'>
@@ -78,12 +81,14 @@ export function ProjectCards({ id, image, name, description, stack, status, live
 
                 {/* Botão ver mais / ver menos */}
                 {isClamped && (
+                    <div className='w-full h-auto flex justify-end'>
                     <button
                         onClick={() => setExpanded(!expanded)}
-                        className="text-[var(--color-green)] text-xs font-mono mt-1"
+                        className="text-[var(--color-green)] text-xs mt-1 p-2 border rounded-2xl cursor-pointer"
                     >
                         {expanded ? 'ver menos ↑' : 'ver mais ↓'}
                     </button>
+                    </div>
                 )}
 
                 {/* Status do projeto */}
