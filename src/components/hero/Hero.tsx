@@ -5,7 +5,7 @@ export function Hero() {
 
     return (
         <>
-            <div className="relative min-h-screen w-full overflow-hidden">
+            <div id="Hero" className="relative min-h-screen w-full overflow-hidden">
                 <MatrixRain />
 
                 <div className="max-w-6xl mx-auto">

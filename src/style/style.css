@@ -17,6 +17,10 @@
   scale: revert;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* ============================================
    BASE
    Estilo global do body — fundo, cor e fonte

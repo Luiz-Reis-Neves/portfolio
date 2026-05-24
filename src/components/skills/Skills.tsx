@@ -5,7 +5,7 @@ import { SkillsTitle } from './SkillsTitle'
 export function Skills() {
     const [terminalDone, setTerminalDone] = useState(false)
     return (
-        <div className="w-full min-h-screen ">
+        <div id="Skills" className="w-full min-h-screen ">
             <div className="max-w-6xl mx-auto min-h-screen">
                 <div className="w-[100%] h-auto">
                     <SkillsTitle/>
