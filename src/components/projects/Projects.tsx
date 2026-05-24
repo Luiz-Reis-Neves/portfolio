@@ -8,7 +8,7 @@ export function Projects(){
                 <TitleProjects/>
                 <div className="w-[100%] h-auto grid grid-cols-3 p-2 gap-4 flex justify-items-center">
                     {projects.map((items)=>(
-                        <ProjectCards key={items.name} {...items}/>
+                        <ProjectCards key={items.id} {...items}/>
                     ))}
                 </div>
             </div>

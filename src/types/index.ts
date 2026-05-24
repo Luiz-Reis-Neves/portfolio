@@ -14,10 +14,12 @@ export type stackItems = {
 }
 
 export type Projects = {
+  id:number
+  image: string
   name: string
   description: string
   stack: stackItems[]
-  image: string
+  status:string
   liveUrl?: string
   githubUrl?: string
 }

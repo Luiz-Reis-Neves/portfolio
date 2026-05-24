@@ -1,4 +1,7 @@
 import type { NavLink, Projects } from "../types/index.ts"
+import finControl from "../assets/img/fin-control.png"
+import zpl from "../assets/img/project-zpl.png"
+import ESD from "../assets/img/ESD.png"
 export const navLinks: NavLink[] = [
     { label: "Hero", href: "#Hero" },
     { label: "About Me", href: "#AboutMe" },
@@ -9,35 +12,60 @@ export const navLinks: NavLink[] = [
 
 export const projects: Projects[] = [
     {
-        name: 'Nome do projeto',
-        description: 'Descrição',
+        id: 1,
+        image: finControl,
+        name: 'Fin-Cntrl',
+        description: 'Aplicação de gerenciamento de finanças pessoais — rendas, gastos e cofrinhos.',
         stack: [
-            { name: 'React', icon: 'react' },
-            { name: 'TypeScript', icon: 'typescript' },
+            { name: 'HTML', icon: 'html' },
+            { name: 'CSS', icon: 'css' },
+            { name: 'Tailwind', icon: 'tailwind' },
+            { name: 'JavaScript', icon: 'javascript' },
+            { name: 'Vite', icon: 'vite' }
         ],
-        image: '/img/projeto.png',
-        liveUrl: 'https://...',
+        status: 'In Progress',
+        liveUrl: 'https://luiz-reis-neves.github.io/fin-cntrl/',
+        githubUrl: 'https://github.com/Luiz-Reis-Neves/fin-cntrl'
+    },
+    {
+        id: 2,
+        image: ESD,
+        name: 'Electrostatic Discharge',
+        description: 'Automated system for validating ESD (Electrostatic Discharge) protection equipment in production environments.',
+        stack: [
+            { name: 'Vite', icon: 'vite' },
+            { name: 'HTML', icon: 'html' },
+            { name: 'CSS', icon: 'css' },
+            { name: 'Tailwind', icon: 'tailwind' },
+            { name: 'JavaScript', icon: 'javascript' },
+            { name: 'React', icon: 'react' },
+            { name: 'Node.js', icon: 'nodejs' },
+            { name: 'Express', icon: 'express' },
+            { name: 'SQLite3', icon: 'sql' },
+
+        ],
+        status: 'In Progress',
+        liveUrl: 'https://esd-two.vercel.app/',
         githubUrl: 'https://...'
     },
     {
-        name: 'Nome do projeto',
-        description: 'Descrição',
+        id: 3,
+        image: zpl,
+        name: 'project-zpl',
+        description: 'This project is a web application developed to generate and customize labels in ZPL (Zebra Programming Language) format used in Zebra thermal printers.',
         stack: [
-            { name: 'React', icon: 'react' },
+            { name: 'Vite', icon: 'vite' },
+            { name: 'HTML', icon: 'html' },
+            { name: 'CSS', icon: 'css' },
+            { name: 'Tailwind', icon: 'tailwind' },
+            { name: 'JavaScript', icon: 'javascript' },
             { name: 'TypeScript', icon: 'typescript' },
-        ],
-        image: '/img/projeto.png',
-        liveUrl: 'https://...',
-        githubUrl: 'https://...'
-    },
-    {
-        name: 'Nome do projeto',
-        description: 'Descrição',
-        stack: [
             { name: 'React', icon: 'react' },
-            { name: 'TypeScript', icon: 'typescript' },
+            { name: 'Node.js', icon: 'nodejs' },
+            { name: 'Express', icon: 'express' },
+            { name: 'MySQL', icon: 'sql' },
         ],
-        image: '/img/projeto.png',
+        status: 'In Progress',
         liveUrl: 'https://...',
         githubUrl: 'https://...'
     }

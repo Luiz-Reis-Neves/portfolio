@@ -1,5 +1,4 @@
 import type { Projects } from '../../types'
-import type { LucideIcon } from 'lucide-react'
 import {
     Html5Original,
     Css3Original,
@@ -7,6 +6,10 @@ import {
     TypescriptOriginal,
     TailwindcssOriginal,
     NodejsOriginal,
+    JavascriptOriginal,
+    VitejsOriginal,
+    ExpressOriginal,
+    MysqlOriginal,
 } from 'devicons-react'
 
 // mapa de string → componente de ícone
@@ -14,17 +17,22 @@ const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
     html: Html5Original,
     css: Css3Original,
     react: ReactOriginal,
+    javascript:JavascriptOriginal,
     typescript: TypescriptOriginal,
     tailwind: TailwindcssOriginal,
+    vite:VitejsOriginal,
     nodejs: NodejsOriginal,
+    express:ExpressOriginal,
+    sql:MysqlOriginal
 }
-export function ProjectCards({ image, name, description, stack, liveUrl, githubUrl }: Projects) {
+export function ProjectCards({id, image, name, description, stack,status, liveUrl, githubUrl }: Projects) {
     return (
         <div className='w-[90%] h-auto border border-gray-500 rounded-2xl'>
-            <div className="w-[100%] h-[200px] border-b border-gray-500"></div>
+            <div className="w-[100%] h-[200px] border-b border-gray-500"><img className='w-full h-full rounded-t-2xl' src={image} alt="" /></div>
             <div className='flex flex-col gap-3 p-3'>
-                <div>{name}</div>
+                <div>{id}- {name}</div>
                 <div>{description}</div>
+                <div>Status: {status}</div>
                 <div className="flex gap-2 flex-wrap">
                     {stack.map((item) => {
                         const Icon = iconMap[item.icon]
