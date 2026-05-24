@@ -202,6 +202,10 @@ body {
 
 /* não esquecer de comentar daqui para baixo */
 
+/* ============================================
+   CARDS — HOVER FLUTUANTE
+   Card sobe suavemente ao passar o mouse
+   ============================================ */
 .card-hover {
   transition: transform 0.3s ease-out;
 }
@@ -210,9 +214,10 @@ body {
   transform: translateY(-8px);
 }
 
-
-
-
+/* ============================================
+   FOTO DE PERFIL — BRILHO VERDE
+   Efeito de glow ao redor da foto do About Me
+   ============================================ */
 .photo-glow {
   box-shadow: 
     0 0 0 1px #1a3a2a,
@@ -220,11 +225,10 @@ body {
     0 0 60px rgba(0, 255, 136, 0.05);
 }
 
-
-
-
-
-
+/* ============================================
+   ANIMAÇÃO — FADE IN COM SUBIDA
+   Usada nos badges de skills do IconsPanel
+   ============================================ */
 @keyframes fade-in {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -234,9 +238,10 @@ body {
     animation: fade-in 0.4s ease-out forwards;
 }
 
-
-
-
+/* ============================================
+   ANIMAÇÃO — FLUTUAÇÃO
+   Cards de skills sobem e descem suavemente
+   ============================================ */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
@@ -246,11 +251,11 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
-
-
-
-
-
+/* ============================================
+   CAROUSEL — SCROLL INFINITO
+   Linha 1 desliza da direita pra esquerda
+   Linha 2 desliza da esquerda pra direita
+   ============================================ */
 @keyframes scroll-left {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -269,6 +274,10 @@ body {
     animation: scroll-right 40s linear infinite;
 }
 
+/* ============================================
+   CAROUSEL — ANIMAÇÃO DE ENTRADA
+   Aparece suavemente quando o terminal termina
+   ============================================ */
 @keyframes fade-slide-up {
     from { 
         opacity: 0; 
@@ -284,7 +293,10 @@ body {
     animation: fade-slide-up 0.6s ease-out forwards;
 }
 
-
+/* ============================================
+   CAROUSEL — HOVER NOS CARDS
+   Ícone escala e texto fica branco no hover
+   ============================================ */
 .carousel-icon {
     transition: transform 0.3s ease-out;
 }
@@ -297,11 +309,11 @@ body {
     color: #ffffff;
 }
 
-
-
-
-
-
+/* ============================================
+   CAROUSEL — FADE NAS BORDAS
+   Gradiente nas laterais para efeito de
+   desaparecimento suave dos cards
+   ============================================ */
 .carousel-fade::before,
 .carousel-fade::after {
     content: '';
@@ -323,13 +335,18 @@ body {
     background: linear-gradient(to left, #0a0a0a, transparent);
 }
 
+/* ============================================
+   NAVBAR — LINK ATIVO
+   Link da seção atual pisca continuamente
+   ============================================ */
 .nav-blink-active {
   animation: blink 0.7s step-end infinite;
 }
 
-
-
-
+/* ============================================
+   PROJECT CARD — HOVER
+   Card sobe e ganha sombra ao passar o mouse
+   ============================================ */
 .project-card {
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
@@ -341,8 +358,10 @@ body {
         0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-
-
+/* ============================================
+   PROJECT CARD — IMAGEM
+   Zoom suave + overlay verde no hover da imagem
+   ============================================ */
 .project-img-wrapper {
     position: relative;
     overflow: hidden;

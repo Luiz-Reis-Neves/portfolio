@@ -16,7 +16,7 @@ const phase3 = `const developer = {
 
 
 export function Terminal() {
-    const terminalRef = useRef(null)
+    const terminalRef = useRef<HTMLDivElement>(null)
 
     const textRef = useRef<HTMLPreElement>(null)
 
