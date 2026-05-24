@@ -1,13 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import type { Skill } from '../../types'
-
 gsap.registerPlugin(ScrollTrigger)
-
-type Props = {
-    onSkillDetected: (skill: Skill) => void
-}
 
 const skills = [
     { name: 'HTML', text: '[SKILL DETECTED] HTML..............OK', learning: false },
@@ -25,7 +19,11 @@ const skills = [
 const PROMPT = '<span style="color:#006633">C:\\&gt;</span> '
 const PROMPT_END = '<span style="color:#006633">C:\\&gt;_</span>'
 
-export function TerminalSkills({ onSkillDetected }: Props) {
+type Props = {
+    onComplete: () => void
+}
+
+export function TerminalSkills({ onComplete }: Props) {
     const containerRef = useRef<HTMLDivElement>(null)
     const startedRef = useRef(false)
     const cancelledRef = useRef(false)
@@ -90,7 +88,6 @@ export function TerminalSkills({ onSkillDetected }: Props) {
                 if (cancelledRef.current) return
                 await wait(350)
                 addLine(skill.text, skill.learning ? 'text-[var(--color-purple)]' : '')
-                onSkillDetected({ name: skill.name, learning: skill.learning })
             }
 
             await wait(500)
@@ -98,6 +95,7 @@ export function TerminalSkills({ onSkillDetected }: Props) {
             await wait(400)
             lines.push(PROMPT_END)
             render()
+            onComplete() // ← chama aqui
         }
 
         ScrollTrigger.create({
@@ -107,16 +105,15 @@ export function TerminalSkills({ onSkillDetected }: Props) {
             onEnter: () => run()
         })
 
-        // Cleanup sem cancelamento — deixa a animação terminar naturalmente
         return () => {}
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <div className="w-full h-[50%] sm:w-[90%] lg:w-[40%] lg:h-auto p-6">
+        <div className="w-full h-auto sm:w-[50%] sm:h-[600px] lg:w-[40%] lg:h-[600px] p-6">
             <div
                 ref={containerRef}
-                className="text-[var(--color-green)] font-mono text-sm leading-loose whitespace-pre-wrap"
+                className="text-[var(--color-green)] font-mono text-sm leading-loose whitespace-pre-wrap sm:ml-[30px]"
             >
                 █
             </div>

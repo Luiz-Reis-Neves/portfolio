@@ -1,20 +1,18 @@
 import { useState } from 'react'
 import { TerminalSkills } from "./TerminalSkills"
-import { IconsPanel } from "./IconsPanel"
-import type { Skill } from "../../types"
+import { Carousel } from "./Carousel"
+import { SkillsTitle } from './SkillsTitle'
 export function Skills() {
-     const [detectedSkills, setDetectedSkills] = useState<Skill[]>([])
-
-    const handleSkillDetected = (skill: Skill) => {
-        setDetectedSkills(prev => [...prev, skill])
-    }
-    
+    const [terminalDone, setTerminalDone] = useState(false)
     return (
-        <div className="min-h-screen w-full">
+        <div className="w-full min-h-screen ">
             <div className="max-w-6xl mx-auto min-h-screen">
-                <div className="w-[100%] h-auto flex flex-col gap-1 p-4 sm:flex-row sm:h-[650px] lg:h-screen lg:flex-row lg:p-0">
-                    <TerminalSkills onSkillDetected={handleSkillDetected} />
-                    <IconsPanel detectedSkills={detectedSkills} />
+                <div className="w-[100%] h-auto">
+                    <SkillsTitle/>
+                </div>
+                <div className="w-[100%] h-auto flex gap-1 flex-col sm:items-center lg:flex-row lg:h-auto lg:p-0">
+                     <TerminalSkills onComplete={() => setTerminalDone(true)} />
+                    {terminalDone && <Carousel />}
                 </div>
             </div>
         </div>

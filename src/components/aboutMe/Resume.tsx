@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react"
 import { CardTwo } from "./CardTwo.tsx"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
-import {User} from 'lucide-react'
+import { User } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -31,10 +31,13 @@ export function Resume() {
     return (
         <div className="w-[100%] h-[60%] flex flex-col gap-3 sm:justify-center sm:gap-5 sm:items-center lg:w-[60%] lg:h-screen lg:gap-5">
             <div ref={ref1} className="w-[100%] h-[auto] sm:w-[90%]">
-                <div className="flex gap-1 items-center">
-                    <User size={16} />
-                <h1 className="text-[var(--color-white)]">About</h1>
+            <div className="flex items-center">
+                <User size={40} />
+                <div className="flex flex-col">
+                    <h1 className="text-[var(--color-white)]">About Me</h1>
+                    <p className="text-[var(--color-white)] text-[11px]">Follow the white rabbit.</p>
                 </div>
+            </div>
                 <h2 className="text-7xl flex text-center font-[family-name:var(--font-display)] sm:text-6xl sm:text-end">Fullstack Developer</h2>
             </div>
             <div ref={ref2} className="w-[100%] h-auto flex justify-center sm:w-[90%] sm:h-[auto]">
