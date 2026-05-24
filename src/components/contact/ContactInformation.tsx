@@ -2,9 +2,9 @@ import { Mail, MapPin, } from 'lucide-react'
 import { GithubOriginal, LinkedinOriginal } from 'devicons-react'
 export function ContactInformation() {
     return (
-        <div className="w-[50%] p-5 mt-4 flex flex-col gap-3">
+        <div className="w-[100%] p-5 mt-4 flex flex-col gap-3">
             <div>
-                <h1 className='text-[var(--color-white)] text-[20px]'>Contact Information</h1>
+                <h1 className=' text-[var(--color-white)] text-[20px]'>Contact Information</h1>
                 <p className='text-[14px] mt-[10px]'>Fill up the form and I'll get back to you as soon as possible.</p>
             </div>
             <div className=' flex flex-col gap-5'>

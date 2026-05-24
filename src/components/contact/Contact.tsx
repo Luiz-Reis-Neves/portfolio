@@ -63,11 +63,11 @@ export function Contact() {
                     <div ref={titleRef} className="w-full">
                         <TitleContact />
                     </div>
-                    <div className="w-[100%] h-[550px] flex">
-                        <div ref={infoRef}>
+                    <div className="w-[100%] flex flex-col sm:flex-row lg:flex-row">
+                        <div ref={infoRef} className="w-[100%] sm:w-[50%] lg:w-[50%]">
                             <ContactInformation />
                         </div>
-                        <div ref={formRef} className="w-[50%]">
+                        <div ref={formRef} className="w-[100%] sm:w-[50%] lg:w-[50%]">
                             <ContactForm />
                         </div>
                     </div>

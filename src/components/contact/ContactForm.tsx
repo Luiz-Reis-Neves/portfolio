@@ -30,7 +30,7 @@ export function ContactForm() {
     }
 
     return (
-        <form ref={formRef} onSubmit={handleSubmit} className="w-full flex flex-col gap-4 mt-[45px]">
+        <form ref={formRef} onSubmit={handleSubmit} className="w-[100%] flex flex-col gap-4 mt-[45px]">
 
             {/* Nome e Email lado a lado */}
             <div className="flex gap-4">
@@ -92,7 +92,7 @@ export function ContactForm() {
             {/* Feedback */}
             {sent && <p className="text-[var(--color-green)] font-mono text-sm text-center">Message sent successfully!</p>}
             {error && <p className="text-red-400 font-mono text-sm text-center">Something went wrong. Try again.</p>}
-
+            <div className='w-[100px] h-[60px] sm:hidden lg:hidden'></div>
         </form>
     )
 }
