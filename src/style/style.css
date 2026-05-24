@@ -322,3 +322,7 @@ body {
     right: 0;
     background: linear-gradient(to left, #0a0a0a, transparent);
 }
+
+.nav-blink-active {
+  animation: blink 0.7s step-end infinite;
+}
