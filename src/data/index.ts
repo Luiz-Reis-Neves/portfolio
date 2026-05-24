@@ -17,11 +17,11 @@ export const projects: Projects[] = [
         name: 'Fin-Cntrl',
         description: 'Aplicação de gerenciamento de finanças pessoais — rendas, gastos e cofrinhos.',
         stack: [
+            { name: 'Vite', icon: 'vite' },
             { name: 'HTML', icon: 'html' },
             { name: 'CSS', icon: 'css' },
             { name: 'Tailwind', icon: 'tailwind' },
             { name: 'JavaScript', icon: 'javascript' },
-            { name: 'Vite', icon: 'vite' }
         ],
         status: 'In Progress',
         liveUrl: 'https://luiz-reis-neves.github.io/fin-cntrl/',

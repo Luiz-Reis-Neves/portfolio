@@ -326,3 +326,17 @@ body {
 .nav-blink-active {
   animation: blink 0.7s step-end infinite;
 }
+
+
+
+
+.project-card {
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+        0 0 0 1px #1a3a2a,
+        0 20px 40px rgba(0, 0, 0, 0.5);
+}
