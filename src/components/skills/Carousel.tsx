@@ -44,8 +44,8 @@ export function Carousel() {
         if (ref.current) ref.current.style.animationPlayState = 'running'
     }
     return (
-        <div className="w-full h-[600px] flex lg:w-[60%] lg:h-auto lg:items-center carousel-enter">
-            <div className="w-full flex flex-col gap-4 py-6 overflow-hidden">
+        <div className="w-full h-auto flex lg:w-[60%] lg:h-auto lg:items-center carousel-enter">
+            <div className="w-full flex flex-col gap-4 py-6 overflow-hidden carousel-fade">
                 {/* Linha 1 — direita para esquerda */}
                 <div
                     className="flex gap-4 carousel-track-left"
@@ -57,14 +57,16 @@ export function Carousel() {
                     {[...row1, ...row1].map((skill, index) => (
                         <div
                             key={index}
-                            className="flex items-center gap-2 bg-white/5  rounded-xl p-7 min-w-max"
+                            className="carousel-card flex items-center gap-2 bg-white/5 rounded-xl p-7 min-w-max cursor-pointer"
                         >
-                            {skill.icon}
+                            <div className="carousel-icon">
+                                {skill.icon}
+                            </div>
                             <div className='flex flex-col'>
-                                <span className="text-[var(--color-text)] font-mono text-sm">
+                                <span className="text-[var(--color-text)] font-mono text-sm transition-colors duration-300 group-hover:text-white">
                                     {skill.name}
                                 </span>
-                                <span className="text-[var(--color-title)] font-mono text-[10px] uppercase">
+                                <span className="text-[var(--color-title)] font-mono text-[10px] uppercase transition-colors duration-300 group-hover:text-white">
                                     {skill.subName}
                                 </span>
                             </div>
@@ -83,14 +85,16 @@ export function Carousel() {
                     {[...row2, ...row2].map((skill, index) => (
                         <div
                             key={index}
-                            className="flex items-center gap-2 bg-white/5  rounded-xl p-7 min-w-max"
+                            className="carousel-card flex items-center gap-2 bg-white/5 rounded-xl p-7 min-w-max cursor-pointer"
                         >
-                            {skill.icon}
+                            <div className="carousel-icon">
+                                {skill.icon}
+                            </div>
                             <div className='flex flex-col'>
-                                <span className="text-[var(--color-text)] font-mono text-sm">
+                                <span className="text-[var(--color-text)] font-mono text-sm transition-colors duration-300 group-hover:text-white">
                                     {skill.name}
                                 </span>
-                                <span className="text-[var(--color-title)] font-mono text-[10px] uppercase">
+                                <span className="text-[var(--color-title)] font-mono text-[10px] uppercase transition-colors duration-300 group-hover:text-white">
                                     {skill.subName}
                                 </span>
                             </div>
