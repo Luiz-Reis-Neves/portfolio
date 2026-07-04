@@ -4,7 +4,7 @@ A personal portfolio built with a dark/matrix aesthetic, featuring interactive a
 
 ## 🔗 Live Demo
 
-[stellar-meerkat-01aa60.netlify.app](https://stellar-meerkat-01aa60.netlify.app/)
+luizreisneves.netlify.app
 
 ## ✨ Features
 
