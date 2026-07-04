@@ -31,7 +31,7 @@ luizreisneves.netlify.app
 
 ```bash
 # Clone the repository
-git clone https://github.com/Luiz-Reis-Neves/portfolioFc.git
+git clone https://github.com/Luiz-Reis-Neves/portfolio.git
 
 # Navigate to the project folder
 cd portfolioFc
