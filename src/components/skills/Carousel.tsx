@@ -44,7 +44,7 @@ export function Carousel() {
         if (ref.current) ref.current.style.animationPlayState = 'running'
     }
     return (
-        <div className="w-full h-auto flex lg:w-[60%] lg:h-auto lg:items-center carousel-enter">
+        <div className="w-full h-auto flex lg:w-[60%] lg:h-auto lg:items-center carousel-enter border">
             <div className="w-full flex flex-col gap-4 py-6 overflow-hidden carousel-fade">
                 {/* Linha 1 — direita para esquerda */}
                 <div

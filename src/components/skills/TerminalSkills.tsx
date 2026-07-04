@@ -105,7 +105,7 @@ export function TerminalSkills({ onComplete }: Props) {
             onEnter: () => run()
         })
 
-        return () => {}
+        return () => { }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -113,7 +113,7 @@ export function TerminalSkills({ onComplete }: Props) {
         <div className="w-full h-auto sm:w-[50%] sm:h-[600px] lg:w-[40%] lg:h-[600px] p-6">
             <div
                 ref={containerRef}
-                className="text-[var(--color-green)] font-mono text-sm leading-loose whitespace-pre-wrap sm:ml-[30px]"
+                className="text-[var(--color-green)] font-mono text-sm leading-loose whitespace-pre-wrap break-words sm:ml-[30px]"
             >
                 █
             </div>

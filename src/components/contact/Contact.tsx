@@ -58,12 +58,12 @@ export function Contact() {
 
     return (
         <div id="Contact" className="w-full min-h-screen">
-            <div className="max-w-6xl mx-auto min-h-screen flex flex-col gap-4">
+            <div className="max-w-6xl mx-auto min-h-screen flex flex-col gap-4 px-4 lg:px-0">
                 <div className="w-[100%] flex flex-col min-h-screen">
                     <div ref={titleRef} className="w-full">
                         <TitleContact />
                     </div>
-                    <div className="w-[100%] flex flex-col sm:flex-row lg:flex-row">
+                    <div className="w-[100%] flex flex-col gap-8 sm:flex-row sm:gap-4 lg:flex-row">
                         <div ref={infoRef} className="w-[100%] sm:w-[50%] lg:w-[50%]">
                             <ContactInformation />
                         </div>

@@ -8,7 +8,7 @@ const phase2 = 'The Matrix has you.'
 const phase3 = `const developer = {
   name: 'Luiz Reis Neves',
   focus: 'Fullstack Mastery',
-  skills: ['React', 'TypeScript', 'GSAP', 'Node.js'],
+  skills: ['TypeScript','React','Node.js','MySQL'],
   learning: 'Always',
   motto: "Code. Learn. Evolve."
 };`
@@ -120,7 +120,7 @@ export function Terminal() {
 
     return (
         <div className="w-full sm:w-[70%] lg:w-[50%] flex-1 flex items-center justify-center">
-            <div ref={terminalRef} className="w-[100%] md:w-[90%] h-[350px] rounded-2xl bg-black/80 terminal-card">
+            <div ref={terminalRef} className="w-[100%] h-[320px] md:w-[90%] md:h-[360px]  rounded-2xl bg-black/80 terminal-card">
                 <div className="w-full h-[60px] px-4 flex items-center justify-between bg-[#171313] rounded-t-2xl">
                     <div className="w-[60px] h-[30px] flex items-center justify-center gap-2">
                         <div className="w-[14px] h-[14px] rounded-full bg-[#ff5f57]"></div>
@@ -134,7 +134,7 @@ export function Terminal() {
                     </div>
                 </div>
                 <div className="p-6">
-                    <pre ref={textRef} className="text-[var(--color-green)] font-mono text-sm whitespace-pre-wrap leading-loose">█</pre>
+                    <pre ref={textRef} className="text-[var(--color-green)] font-mono text-xs sm:text-sm whitespace-pre-wrap break-words leading-loose">█</pre>
                 </div>
             </div>
         </div>

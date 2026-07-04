@@ -33,25 +33,25 @@ export function ContactForm() {
         <form ref={formRef} onSubmit={handleSubmit} className="w-[100%] flex flex-col gap-4 mt-[45px]">
 
             {/* Nome e Email lado a lado */}
-            <div className="flex gap-4">
-                <div className="flex flex-col gap-1 flex-1">
+            <div className="w-full flex gap-4">
+                <div className="flex flex-col gap-1 flex-1 min-w-0">
                     <label className="text-[var(--color-muted)] font-mono text-xs uppercase tracking-widest">Your Name</label>
                     <input
                         name="from_name"
                         type="text"
                         required
                         placeholder="John Doe"
-                        className="bg-black/30 border border-[var(--color-border)] rounded-lg px-4 py-3 font-mono text-sm text-[var(--color-text)] placeholder:text-[var(--color-muted)] focus:outline-none focus:border-[var(--color-green)] transition-colors"
+                        className="w-full bg-black/30 border border-[var(--color-border)] rounded-lg px-4 py-3 font-mono text-sm text-[var(--color-text)] placeholder:text-[var(--color-muted)] focus:outline-none focus:border-[var(--color-green)] transition-colors"
                     />
                 </div>
-                <div className="flex flex-col gap-1 flex-1">
+                <div className="flex flex-col gap-1 flex-1 min-w-0">
                     <label className="text-[var(--color-muted)] font-mono text-xs uppercase tracking-widest">Your Email</label>
                     <input
                         name="from_email"
                         type="email"
                         required
                         placeholder="john@email.com"
-                        className="bg-black/30 border border-[var(--color-border)] rounded-lg px-4 py-3 font-mono text-sm text-[var(--color-text)] placeholder:text-[var(--color-muted)] focus:outline-none focus:border-[var(--color-green)] transition-colors"
+                        className="w-full bg-black/30 border border-[var(--color-border)] rounded-lg px-4 py-3 font-mono text-sm text-[var(--color-text)] placeholder:text-[var(--color-muted)] focus:outline-none focus:border-[var(--color-green)] transition-colors"
                     />
                 </div>
             </div>

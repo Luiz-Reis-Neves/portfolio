@@ -38,14 +38,12 @@ export function Navbar() {
     <div className="w-full h-[80px] fixed z-50 bottom-0 left-0 flex justify-center items-center">
       <div className="border-glow w-[90%] max-w-[500px] xl:max-w-[500px] h-[60px] rounded-2xl">
         <div className="border-glow-inner rounded-2xl">
-          <ul className="w-full flex justify-between items-center h-full p-5">
+          <ul className="w-full flex justify-between items-center h-full px-5">
             {navLinks.map((link) => {
               const Icon = icons[link.href]
               const isActive = activeSection === link.href
               return (
                 <li key={link.href} className="flex items-center gap-1">
-
-
                   <a href={link.href}
                     className={`text-sm flex gap-1 items-center ${isActive ? 'nav-blink-active' : 'nav-blink'}`}>
                     <Icon className="w-6 h-6 sm:w-4 sm:h-4" />
