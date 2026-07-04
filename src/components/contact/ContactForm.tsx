@@ -34,7 +34,7 @@ export function ContactForm() {
 
             {/* Nome e Email lado a lado */}
             <div className="w-full flex gap-4">
-                <div className="flex flex-col gap-1 flex-1 min-w-0">
+                <div className="flex flex-col gap-1 flex-1 min-w-0 border">
                     <label className="text-[var(--color-muted)] font-mono text-xs uppercase tracking-widest">Your Name</label>
                     <input
                         name="from_name"
@@ -44,7 +44,7 @@ export function ContactForm() {
                         className="w-full bg-black/30 border border-[var(--color-border)] rounded-lg px-4 py-3 font-mono text-sm text-[var(--color-text)] placeholder:text-[var(--color-muted)] focus:outline-none focus:border-[var(--color-green)] transition-colors"
                     />
                 </div>
-                <div className="flex flex-col gap-1 flex-1 min-w-0">
+                <div className="flex flex-col gap-1 flex-1 min-w-0 border">
                     <label className="text-[var(--color-muted)] font-mono text-xs uppercase tracking-widest">Your Email</label>
                     <input
                         name="from_email"
@@ -58,7 +58,7 @@ export function ContactForm() {
 
             {/* Assunto */}
             <div className="flex flex-col gap-1">
-                <label className="text-[var(--color-muted)] font-mono text-xs uppercase tracking-widest">Subject</label>  
+                <label className="text-[var(--color-muted)] font-mono text-xs uppercase tracking-widest">Subject</label>
                 <input
                     name="subject"
                     type="text"
