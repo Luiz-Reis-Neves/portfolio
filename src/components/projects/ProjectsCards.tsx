@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { Projects } from '../../types'
@@ -31,10 +31,7 @@ const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
     sql: MysqlOriginal
 }
 
-export function ProjectCards({ id, image, name, description, stack, status, liveUrl, githubUrl }: Projects) {
-    const [expanded, setExpanded] = useState(false)
-    const [isClamped, setIsClamped] = useState(false)
-
+export function ProjectCards({ image, name, description, stack, status, liveUrl, githubUrl }: Projects) {
     const descRef = useRef<HTMLDivElement>(null)
     const cardRef = useRef<HTMLDivElement>(null)
 
@@ -55,10 +52,6 @@ export function ProjectCards({ id, image, name, description, stack, status, live
     }
 
     useEffect(() => {
-        // Verifica se a descrição está sendo cortada pelo line-clamp
-        if (descRef.current) {
-            setIsClamped(descRef.current.scrollHeight > descRef.current.clientHeight)
-        }
 
         // Animação de entrada com ScrollTrigger — card sobe suavemente ao entrar na tela
         if (cardRef.current) {
@@ -85,39 +78,27 @@ export function ProjectCards({ id, image, name, description, stack, status, live
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className='w-[100%] h-full border border-gray-500 rounded-2xl flex flex-col project-card'
+            className='w-[100%] h-auto border border-gray-500 rounded-2xl flex flex-col project-card'
         >
             {/* Imagem do projeto */}
-            <div className="project-img-wrapper w-[100%] h-[200px] border-b border-gray-500">
-                <img className='w-full h-full rounded-t-2xl object-cover' src={image} alt={name} />
+            <div className="project-img-wrapper w-full h-[170px] aspect-video border-b border-gray-500">
+                <img className='w-full rounded-t-2xl object-cover object-top' src={image} alt={name} />
                 <div className="project-img-overlay" />
             </div>
 
             {/* Conteúdo do card */}
-            <div className='flex flex-col gap-3 p-5'>
+            <div className='flex flex-col gap-1 p-5'>
 
                 {/* Nome do projeto */}
-                <div className='text-[18px] text-[var(--color-white)]'>{id} {name}</div>
+                <div className='text-[19px] text-[var(--color-white)]'>{name}</div>
 
                 {/* Descrição com expand/collapse */}
-                <div ref={descRef} className={`text-[13px] text-justify ${expanded ? '' : 'line-clamp-2'}`}>
+                <div ref={descRef} className={`text-[11px] text-justify`}>
                     {description}
                 </div>
 
-                {/* Botão ver mais / ver menos — só aparece se o texto foi cortado */}
-                {isClamped && (
-                    <div className='w-full h-auto flex justify-end'>
-                        <button
-                            onClick={() => setExpanded(!expanded)}
-                            className="text-[var(--color-green)] text-xs mt-1 p-2 border rounded-2xl cursor-pointer"
-                        >
-                            {expanded ? 'ver menos ↑' : 'ver mais ↓'}
-                        </button>
-                    </div>
-                )}
-
                 {/* Status do projeto */}
-                <div className='text-[13px]'>Status: {status}</div>
+                <div className='text-[11px]'>Status: {status}</div>
 
                 {/* Stack de tecnologias */}
                 <div className="flex gap-2 flex-wrap">
@@ -135,10 +116,10 @@ export function ProjectCards({ id, image, name, description, stack, status, live
 
             {/* Botões de ação */}
             <div className='flex gap-3 p-3 justify-center mt-auto'>
-                <a href={liveUrl} target="_blank" className="btn-outline">
+                <a href={liveUrl} target="_blank" className="btn-outline inline-flex items-center justify-center min-w-[80px] h-[40px]">
                     <span>Live</span>
                 </a>
-                <a href={githubUrl} target="_blank" className="btn-outline">
+                <a href={githubUrl} target="_blank" className="btn-outline inline-flex items-center justify-center min-w-[80px] h-[40px]">
                     <span>GitHub</span>
                 </a>
             </div>

@@ -1,6 +1,5 @@
 import type { NavLink, Projects } from "../types/index.ts"
 import finControl from "../assets/img/fin-control.png"
-import zpl from "../assets/img/project-zpl.png"
 import ESD from "../assets/img/ESD.png"
 export const navLinks: NavLink[] = [
     { label: "Hero", href: "#Hero" },
@@ -31,7 +30,7 @@ export const projects: Projects[] = [
         id: 2,
         image: ESD,
         name: 'Electrostatic Discharge',
-        description: 'Automated system for validating ESD (Electrostatic Discharge) protection equipment in production environments.',
+        description: 'Automated system for validating ESD protection equipment in production environments.',
         stack: [
             { name: 'Vite', icon: 'vite' },
             { name: 'HTML', icon: 'html' },
@@ -46,27 +45,6 @@ export const projects: Projects[] = [
         ],
         status: 'In Progress',
         liveUrl: 'https://esd-two.vercel.app/',
-        githubUrl: 'https://...'
-    },
-    {
-        id: 3,
-        image: zpl,
-        name: 'project-zpl',
-        description: 'This project is a web application developed to generate and customize labels in ZPL (Zebra Programming Language) format used in Zebra thermal printers.',
-        stack: [
-            { name: 'Vite', icon: 'vite' },
-            { name: 'HTML', icon: 'html' },
-            { name: 'CSS', icon: 'css' },
-            { name: 'Tailwind', icon: 'tailwind' },
-            { name: 'JavaScript', icon: 'javascript' },
-            { name: 'TypeScript', icon: 'typescript' },
-            { name: 'React', icon: 'react' },
-            { name: 'Node.js', icon: 'nodejs' },
-            { name: 'Express', icon: 'express' },
-            { name: 'MySQL', icon: 'sql' },
-        ],
-        status: 'In Progress',
-        liveUrl: 'https://...',
         githubUrl: 'https://...'
     }
 ]
