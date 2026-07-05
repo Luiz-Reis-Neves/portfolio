@@ -78,7 +78,7 @@ export function ProjectCards({ image, name, description, stack, status, liveUrl,
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className='w-[100%] h-auto border border-gray-500 rounded-2xl flex flex-col project-card'
+            className='w-[100%] h-auto border border-gray-500 rounded-2xl flex flex-col project-card lg:w-[70%]'
         >
             {/* Imagem do projeto */}
             <div className="project-img-wrapper w-full h-[170px] aspect-video border-b border-gray-500">

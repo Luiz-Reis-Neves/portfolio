@@ -11,9 +11,9 @@ const skills = [
     { name: 'React', text: '[SKILL DETECTED] REACT.............OK', learning: false },
     { name: 'Git/GitHub', text: '[SKILL DETECTED] GIT/GITHUB........OK', learning: false },
     { name: 'GSAP', text: '[SKILL DETECTED] GSAP........LEARNING', learning: true },
-    { name: 'Node.js', text: '[SKILL DETECTED] NODE.JS.....LEARNING', learning: true },
-    { name: 'API REST', text: '[SKILL DETECTED] APIREST.....LEARNING', learning: true },
-    { name: 'MySQL', text: '[SKILL DETECTED] MYSQL.......LEARNING', learning: true },
+    { name: 'Node.js', text: '[SKILL DETECTED] NODE.JS...........OK', learning: false },
+    { name: 'API REST', text: '[SKILL DETECTED] APIREST...........OK', learning: false },
+    { name: 'MySQL', text: '[SKILL DETECTED] MYSQL.............OK', learning: false },
 ]
 
 const PROMPT = '<span style="color:#006633">C:\\&gt;</span> '
