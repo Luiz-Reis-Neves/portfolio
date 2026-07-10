@@ -14,9 +14,9 @@ export function Projects() {
         <div id="Projects" className="w-full min-h-screen">
             <div className="max-w-6xl mx-auto min-h-screen flex flex-col gap-4 sm:px-2">
                 <TitleProjects />
-                <div className="w-[100%] h-auto grid grid-cols-1  p-2 gap-4 flex justify-items-center sm:grid-cols-2 lg:grid-cols-2">
+                <div className="w-[100%] h-auto grid grid-cols-1  p-2 gap-4 justify-items-center sm:grid-cols-2 lg:grid-cols-2">
                     {projects.map((items) => (
-                        <ProjectCards key={items.id} {...items} />
+                        <ProjectCards key={items.id} {...items} onSelect={() => setSelectedId(items.id)} />
                     ))}
                 </div>
             </div>

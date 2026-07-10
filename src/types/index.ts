@@ -35,5 +35,5 @@ export type Section = {
 
 export type ProjectDetail = {
   id: number
-  sections: Section[]
+  sections: Section[] 
 }
