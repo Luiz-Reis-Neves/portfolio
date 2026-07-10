@@ -23,6 +23,7 @@ export type Projects = {
   status:string
   liveUrl?: string
   githubUrl?: string
+  lockedReason?: string
 }
 
 export type Section = {

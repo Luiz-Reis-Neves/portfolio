@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Lock } from 'lucide-react'
 import type { Projects } from '../../types'
 import {
     Html5Original,
@@ -31,7 +32,7 @@ const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
     sql: MysqlOriginal
 }
 
-export function ProjectCards({ image, name, description, stack, status, liveUrl, githubUrl, onSelect }: Projects & { onSelect?: () => void }) {
+export function ProjectCards({ image, name, description, stack, status, liveUrl, githubUrl, lockedReason, onSelect }: Projects & { onSelect?: () => void }) {
     const descRef = useRef<HTMLDivElement>(null)
     const cardRef = useRef<HTMLDivElement>(null)
 
@@ -83,7 +84,7 @@ export function ProjectCards({ image, name, description, stack, status, liveUrl,
         >
             {/* Imagem do projeto */}
             <div className="project-img-wrapper w-full h-[170px] aspect-video border-b border-gray-500">
-                <img className='w-full rounded-t-2xl object-cover object-top' src={image} alt={name} />
+                <img className='w-full h-full rounded-t-2xl object-cover object-top' src={image} alt={name} />
                 <div className="project-img-overlay" />
             </div>
 
@@ -117,12 +118,27 @@ export function ProjectCards({ image, name, description, stack, status, liveUrl,
 
             {/* Botões de ação */}
             <div className='flex gap-3 p-3 justify-center mt-auto' onClick={(e) => e.stopPropagation()}>
-                <a href={liveUrl} target="_blank" className="btn-outline inline-flex items-center justify-center min-w-[80px] h-[40px]">
-                    <span>Live</span>
-                </a>
-                <a href={githubUrl} target="_blank" className="btn-outline inline-flex items-center justify-center min-w-[80px] h-[40px]">
-                    <span>GitHub</span>
-                </a>
+                {liveUrl ? (
+                    <a href={liveUrl} target="_blank" className="btn-outline inline-flex items-center justify-center min-w-[80px] h-[40px]">
+                        <span>Live</span>
+                    </a>
+                ) : lockedReason ? (
+                    <button type="button" onClick={() => alert(lockedReason)} className="btn-outline inline-flex items-center justify-center gap-1 min-w-[80px] h-[40px] opacity-50">
+                        <Lock size={14} />
+                        <span>Live</span>
+                    </button>
+                ) : null}
+
+                {githubUrl ? (
+                    <a href={githubUrl} target="_blank" className="btn-outline inline-flex items-center justify-center min-w-[80px] h-[40px]">
+                        <span>GitHub</span>
+                    </a>
+                ) : lockedReason ? (
+                    <button type="button" onClick={() => alert(lockedReason)} className="btn-outline inline-flex items-center justify-center gap-1 min-w-[80px] h-[40px] opacity-50">
+                        <Lock size={14} />
+                        <span>GitHub</span>
+                    </button>
+                ) : null}
             </div>
         </div>
     )

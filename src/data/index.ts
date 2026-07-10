@@ -1,6 +1,12 @@
 import type { NavLink, Projects } from "../types/index.ts"
 import finControl from "../assets/img/fin-control.png"
-import ESD from "../assets/img/ESD.png"
+import ESD from "../assets/img/venttos.png"
+import esdCarousel1 from "../assets/img/venttos.png"
+import esdCarousel2 from "../assets/img/img1.jpeg"
+import esdCarousel3 from "../assets/img/img2.jpeg"
+import esdCarousel4 from "../assets/img/img3.jpeg"
+
+
 export const navLinks: NavLink[] = [
     { label: "Hero", href: "#Hero" },
     { label: "About Me", href: "#AboutMe" },
@@ -29,6 +35,7 @@ export const projects: Projects[] = [
     {
         id: 2,
         image: ESD,
+        images: [esdCarousel1, esdCarousel2,esdCarousel3,esdCarousel4],
         name: 'Electrostatic Discharge',
         description: 'Automated system for validating ESD protection equipment in production environments.',
         stack: [
@@ -44,7 +51,7 @@ export const projects: Projects[] = [
 
         ],
         status: 'In Progress',
-        liveUrl: 'https://esd-two.vercel.app/',
-        githubUrl: 'https://...'
+        lockedReason: 'Projeto interno — acesso restrito à empresa. Recrutador? Bora marcar uma call pra eu te mostrar em ação.'
+        
     },
 ]

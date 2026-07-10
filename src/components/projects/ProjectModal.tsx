@@ -45,7 +45,7 @@ export function ProjectModal({ onClose, children }: ProjectModalProps) {
             >
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 z-10 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors bg-black/40 rounded-full p-1"
+                    className="absolute top-4 right-4 z-30 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors bg-black/40 rounded-full p-1"
                 >
                     <X size={22} />
                 </button>
