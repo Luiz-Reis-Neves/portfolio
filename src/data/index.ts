@@ -46,5 +46,5 @@ export const projects: Projects[] = [
         status: 'In Progress',
         liveUrl: 'https://esd-two.vercel.app/',
         githubUrl: 'https://...'
-    }
+    },
 ]

@@ -16,10 +16,24 @@ export type stackItems = {
 export type Projects = {
   id:number
   image: string
+  images?: string[]
   name: string
   description: string
   stack: stackItems[]
   status:string
   liveUrl?: string
   githubUrl?: string
+}
+
+export type Section = {
+  title?: string
+  subtitle?: string
+  image?: string
+  text?:string
+  list?:string[]
+}
+
+export type ProjectDetail = {
+  id: number
+  sections: Section[]
 }

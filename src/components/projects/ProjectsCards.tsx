@@ -31,7 +31,7 @@ const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
     sql: MysqlOriginal
 }
 
-export function ProjectCards({ image, name, description, stack, status, liveUrl, githubUrl }: Projects) {
+export function ProjectCards({ image, name, description, stack, status, liveUrl, githubUrl, onSelect }: Projects & { onSelect?: () => void }) {
     const descRef = useRef<HTMLDivElement>(null)
     const cardRef = useRef<HTMLDivElement>(null)
 
@@ -78,7 +78,8 @@ export function ProjectCards({ image, name, description, stack, status, liveUrl,
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className='w-[100%] h-auto border border-gray-500 rounded-2xl flex flex-col project-card lg:w-[70%]'
+            onClick={onSelect}
+            className='w-[100%] h-auto border border-gray-500 rounded-2xl flex flex-col project-card lg:w-[70%] cursor-pointer'
         >
             {/* Imagem do projeto */}
             <div className="project-img-wrapper w-full h-[170px] aspect-video border-b border-gray-500">
@@ -115,7 +116,7 @@ export function ProjectCards({ image, name, description, stack, status, liveUrl,
             </div>
 
             {/* Botões de ação */}
-            <div className='flex gap-3 p-3 justify-center mt-auto'>
+            <div className='flex gap-3 p-3 justify-center mt-auto' onClick={(e) => e.stopPropagation()}>
                 <a href={liveUrl} target="_blank" className="btn-outline inline-flex items-center justify-center min-w-[80px] h-[40px]">
                     <span>Live</span>
                 </a>
