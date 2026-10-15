@@ -4,7 +4,7 @@ A personal portfolio built with a dark/matrix aesthetic, featuring interactive a
 
 ## 🔗 Live Demo
 
-luizreisneves.netlify.app
+[portfolio-luiz-reis-neves.vercel.app](https://portfolio-luiz-reis-neves.vercel.app/)
 
 ## ✨ Features
 
@@ -34,7 +34,7 @@ luizreisneves.netlify.app
 git clone https://github.com/Luiz-Reis-Neves/portfolio.git
 
 # Navigate to the project folder
-cd portfolioFc
+cd portfolio
 
 # Install dependencies
 npm install
