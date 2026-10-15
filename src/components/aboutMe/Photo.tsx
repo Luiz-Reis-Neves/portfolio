@@ -1,4 +1,4 @@
-import perfil from '../../assets/img/perfil.png'
+import perfil from '../../assets/img/perfil.webp'
 import { useEffect, useRef } from "react"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import gsap from 'gsap'

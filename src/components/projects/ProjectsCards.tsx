@@ -3,18 +3,17 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Lock } from 'lucide-react'
 import type { Projects } from '../../types'
-import {
-    Html5Original,
-    Css3Original,
-    ReactOriginal,
-    TypescriptOriginal,
-    TailwindcssOriginal,
-    NodejsOriginal,
-    JavascriptOriginal,
-    VitejsOriginal,
-    ExpressOriginal,
-    MysqlOriginal,
-} from 'devicons-react'
+// Import por ícone — o import pela raiz ('devicons-react') carrega todos os ícones (~10 MB)
+import Html5Original from 'devicons-react/icons/Html5Original'
+import Css3Original from 'devicons-react/icons/Css3Original'
+import ReactOriginal from 'devicons-react/icons/ReactOriginal'
+import TypescriptOriginal from 'devicons-react/icons/TypescriptOriginal'
+import TailwindcssOriginal from 'devicons-react/icons/TailwindcssOriginal'
+import NodejsOriginal from 'devicons-react/icons/NodejsOriginal'
+import JavascriptOriginal from 'devicons-react/icons/JavascriptOriginal'
+import VitejsOriginal from 'devicons-react/icons/VitejsOriginal'
+import ExpressOriginal from 'devicons-react/icons/ExpressOriginal'
+import MysqlOriginal from 'devicons-react/icons/MysqlOriginal'
 
 gsap.registerPlugin(ScrollTrigger)
 

@@ -1,5 +1,6 @@
 import { Mail, MapPin, } from 'lucide-react'
-import { GithubOriginal, LinkedinOriginal } from 'devicons-react'
+import GithubOriginal from 'devicons-react/icons/GithubOriginal'
+import LinkedinOriginal from 'devicons-react/icons/LinkedinOriginal'
 export function ContactInformation() {
     return (
         <div className="w-[100%] p-5 mt-4 flex flex-col gap-3">

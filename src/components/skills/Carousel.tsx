@@ -1,18 +1,17 @@
 import { useRef } from 'react'
 import { Webhook, Zap } from 'lucide-react'
-import {
-    Html5Original,
-    Css3Original,
-    JavascriptOriginal,
-    TypescriptOriginal,
-    ReactOriginal,
-    TailwindcssOriginal,
-    NodejsOriginal,
-    ExpressOriginal,
-    MysqlOriginal,
-    GitOriginal,
-    VitejsOriginal,
-} from 'devicons-react'
+// Import por ícone — o import pela raiz ('devicons-react') carrega todos os ícones (~10 MB)
+import Html5Original from 'devicons-react/icons/Html5Original'
+import Css3Original from 'devicons-react/icons/Css3Original'
+import JavascriptOriginal from 'devicons-react/icons/JavascriptOriginal'
+import TypescriptOriginal from 'devicons-react/icons/TypescriptOriginal'
+import ReactOriginal from 'devicons-react/icons/ReactOriginal'
+import TailwindcssOriginal from 'devicons-react/icons/TailwindcssOriginal'
+import NodejsOriginal from 'devicons-react/icons/NodejsOriginal'
+import ExpressOriginal from 'devicons-react/icons/ExpressOriginal'
+import MysqlOriginal from 'devicons-react/icons/MysqlOriginal'
+import GitOriginal from 'devicons-react/icons/GitOriginal'
+import VitejsOriginal from 'devicons-react/icons/VitejsOriginal'
 
 const row1 = [
     { name: 'HTML', subName: 'Markup Language', icon: <Html5Original size={32} /> },
