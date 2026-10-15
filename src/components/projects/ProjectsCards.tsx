@@ -1,38 +1,13 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Lock } from 'lucide-react'
 import type { Projects } from '../../types'
-// Import por ícone — o import pela raiz ('devicons-react') carrega todos os ícones (~10 MB)
-import Html5Original from 'devicons-react/icons/Html5Original'
-import Css3Original from 'devicons-react/icons/Css3Original'
-import ReactOriginal from 'devicons-react/icons/ReactOriginal'
-import TypescriptOriginal from 'devicons-react/icons/TypescriptOriginal'
-import TailwindcssOriginal from 'devicons-react/icons/TailwindcssOriginal'
-import NodejsOriginal from 'devicons-react/icons/NodejsOriginal'
-import JavascriptOriginal from 'devicons-react/icons/JavascriptOriginal'
-import VitejsOriginal from 'devicons-react/icons/VitejsOriginal'
-import ExpressOriginal from 'devicons-react/icons/ExpressOriginal'
-import MysqlOriginal from 'devicons-react/icons/MysqlOriginal'
+import { stackIcons } from './stackIcons.ts'
+import { ProjectLinks } from './ProjectLinks.tsx'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Mapa de string → componente de ícone da stack
-const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
-    html: Html5Original,
-    css: Css3Original,
-    react: ReactOriginal,
-    javascript: JavascriptOriginal,
-    typescript: TypescriptOriginal,
-    tailwind: TailwindcssOriginal,
-    vite: VitejsOriginal,
-    nodejs: NodejsOriginal,
-    express: ExpressOriginal,
-    sql: MysqlOriginal
-}
-
 export function ProjectCards({ image, name, description, stack, status, liveUrl, githubUrl, lockedReason, onSelect }: Projects & { onSelect?: () => void }) {
-    const descRef = useRef<HTMLDivElement>(null)
     const cardRef = useRef<HTMLDivElement>(null)
 
     // Efeito spotlight — ilumina ao redor do cursor
@@ -78,25 +53,34 @@ export function ProjectCards({ image, name, description, stack, status, liveUrl,
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            onClick={onSelect}
-            className='w-[100%] h-auto border border-gray-500 rounded-2xl flex flex-col project-card lg:w-[70%] cursor-pointer'
+            className='relative w-[100%] h-auto border border-gray-500 rounded-2xl flex flex-col project-card lg:w-[70%] has-[.card-open:focus-visible]:outline-2 has-[.card-open:focus-visible]:outline-offset-4 has-[.card-open:focus-visible]:outline-[var(--color-text)]'
         >
             {/* Imagem do projeto */}
             <div className="project-img-wrapper w-full h-[170px] aspect-video border-b border-gray-500">
-                <img className='w-full h-full rounded-t-2xl object-cover object-top' src={image} alt={name} />
+                <img className='w-full h-full rounded-t-2xl object-cover object-top' src={image} alt="" />
                 <div className="project-img-overlay" />
             </div>
 
             {/* Conteúdo do card */}
             <div className='flex flex-col gap-1 p-5'>
 
-                {/* Nome do projeto */}
-                <div className='text-[19px] text-[var(--color-white)]'>{name}</div>
+                {/* Nome do projeto — o botão se estende pelo card inteiro (after:inset-0),
+                    então o card todo é clicável e também acessível pelo teclado */}
+                <h3 className='text-[19px] text-[var(--color-white)]'>
+                    <button
+                        type="button"
+                        onClick={onSelect}
+                        aria-haspopup="dialog"
+                        className="card-open text-left cursor-pointer focus-visible:outline-none after:absolute after:inset-0 after:rounded-2xl after:content-['']"
+                    >
+                        {name}
+                    </button>
+                </h3>
 
-                {/* Descrição com expand/collapse */}
-                <div ref={descRef} className={`text-[11px] text-justify`}>
+                {/* Descrição */}
+                <p className='text-[11px] text-justify'>
                     {description}
-                </div>
+                </p>
 
                 {/* Status do projeto */}
                 <div className='text-[11px]'>Status: {status}</div>
@@ -104,10 +88,10 @@ export function ProjectCards({ image, name, description, stack, status, liveUrl,
                 {/* Stack de tecnologias */}
                 <div className="flex gap-2 flex-wrap">
                     {stack.map((item) => {
-                        const Icon = iconMap[item.icon]
+                        const Icon = stackIcons[item.icon]
                         return (
                             <div key={item.name} className="flex items-center gap-1">
-                                {Icon && <Icon size={16} />}
+                                {Icon && <Icon size={16} aria-hidden="true" />}
                                 <span className="text-xs font-mono text-[var(--color-muted)]">{item.name}</span>
                             </div>
                         )
@@ -115,30 +99,14 @@ export function ProjectCards({ image, name, description, stack, status, liveUrl,
                 </div>
             </div>
 
-            {/* Botões de ação */}
-            <div className='flex gap-3 p-3 justify-center mt-auto' onClick={(e) => e.stopPropagation()}>
-                {liveUrl ? (
-                    <a href={liveUrl} target="_blank" className="btn-outline inline-flex items-center justify-center min-w-[80px] h-[40px]">
-                        <span>Live</span>
-                    </a>
-                ) : lockedReason ? (
-                    <button type="button" onClick={() => alert(lockedReason)} className="btn-outline inline-flex items-center justify-center gap-1 min-w-[80px] h-[40px] opacity-50">
-                        <Lock size={14} />
-                        <span>Live</span>
-                    </button>
-                ) : null}
-
-                {githubUrl ? (
-                    <a href={githubUrl} target="_blank" className="btn-outline inline-flex items-center justify-center min-w-[80px] h-[40px]">
-                        <span>GitHub</span>
-                    </a>
-                ) : lockedReason ? (
-                    <button type="button" onClick={() => alert(lockedReason)} className="btn-outline inline-flex items-center justify-center gap-1 min-w-[80px] h-[40px] opacity-50">
-                        <Lock size={14} />
-                        <span>GitHub</span>
-                    </button>
-                ) : null}
-            </div>
+            {/* Botões de ação — z-10 para ficarem acima da área clicável do card */}
+            <ProjectLinks
+                name={name}
+                liveUrl={liveUrl}
+                githubUrl={githubUrl}
+                lockedReason={lockedReason}
+                className='relative z-10 p-3 mt-auto'
+            />
         </div>
     )
 }

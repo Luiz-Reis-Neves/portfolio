@@ -7,9 +7,13 @@ type ProjectModalProps = {
     children: React.ReactNode
 }
 
+// elementos que podem receber foco pelo Tab
+const FOCUSABLE = 'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])'
+
 export function ProjectModal({ onClose, children }: ProjectModalProps) {
     const overlayRef = useRef<HTMLDivElement>(null)
     const boxRef = useRef<HTMLDivElement>(null)
+    const closeRef = useRef<HTMLButtonElement>(null)
 
     useEffect(() => {
         gsap.set(overlayRef.current, { opacity: 0 })
@@ -17,8 +21,27 @@ export function ProjectModal({ onClose, children }: ProjectModalProps) {
         gsap.to(overlayRef.current, { opacity: 1, duration: 0.25, ease: 'power2.out' })
         gsap.to(boxRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: 'power2.out', delay: 0.05 })
 
+        // guarda quem tinha o foco (o card) para devolver ao fechar
+        const previouslyFocused = document.activeElement as HTMLElement | null
+        closeRef.current?.focus()
+
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') onClose()
+
+            // prende o Tab dentro do modal
+            if (e.key === 'Tab' && boxRef.current) {
+                const focusable = boxRef.current.querySelectorAll<HTMLElement>(FOCUSABLE)
+                const first = focusable[0]
+                const last = focusable[focusable.length - 1]
+
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault()
+                    last.focus()
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault()
+                    first.focus()
+                }
+            }
         }
         document.addEventListener('keydown', handleKeyDown)
         document.body.style.overflow = 'hidden'
@@ -26,6 +49,7 @@ export function ProjectModal({ onClose, children }: ProjectModalProps) {
         return () => {
             document.removeEventListener('keydown', handleKeyDown)
             document.body.style.overflow = ''
+            previouslyFocused?.focus()
         }
     }, [onClose])
 
@@ -41,13 +65,19 @@ export function ProjectModal({ onClose, children }: ProjectModalProps) {
         >
             <div
                 ref={boxRef}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="project-modal-title"
                 className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl"
             >
                 <button
+                    ref={closeRef}
+                    type="button"
                     onClick={onClose}
+                    aria-label="Close project details"
                     className="absolute top-4 right-4 z-30 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors bg-black/40 rounded-full p-1"
                 >
-                    <X size={22} />
+                    <X size={22} aria-hidden="true" />
                 </button>
                 {children}
             </div>

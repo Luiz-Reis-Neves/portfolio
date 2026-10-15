@@ -35,7 +35,7 @@ export function Navbar() {
   }, [])
 
   return (
-    <div className="w-full h-[80px] fixed z-50 bottom-0 left-0 flex justify-center items-center">
+    <nav aria-label="Main navigation" className="w-full h-[80px] fixed z-50 bottom-0 left-0 flex justify-center items-center">
       <div className="border-glow w-[90%] max-w-[500px] xl:max-w-[500px] h-[60px] rounded-2xl">
         <div className="border-glow-inner rounded-2xl">
           <ul className="w-full flex justify-between items-center h-full px-5">
@@ -45,8 +45,10 @@ export function Navbar() {
               return (
                 <li key={link.href} className="flex items-center gap-1">
                   <a href={link.href}
+                    aria-label={link.label}
+                    aria-current={isActive ? 'location' : undefined}
                     className={`text-sm flex gap-1 items-center ${isActive ? 'nav-blink-active' : 'nav-blink'}`}>
-                    <Icon className="w-6 h-6 sm:w-4 sm:h-4" />
+                    <Icon className="w-6 h-6 sm:w-4 sm:h-4" aria-hidden="true" />
                     <span className="hidden sm:inline">{link.label}</span>
                   </a>
                 </li>
@@ -55,6 +57,6 @@ export function Navbar() {
           </ul>
         </div>
       </div>
-    </div>
+    </nav>
   )
 }

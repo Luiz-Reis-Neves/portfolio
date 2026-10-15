@@ -1,30 +1,8 @@
 import { useState } from 'react'
-import { Lock, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type { Projects, ProjectDetail } from '../../types'
-// Import por ícone — o import pela raiz ('devicons-react') carrega todos os ícones (~10 MB)
-import Html5Original from 'devicons-react/icons/Html5Original'
-import Css3Original from 'devicons-react/icons/Css3Original'
-import ReactOriginal from 'devicons-react/icons/ReactOriginal'
-import TypescriptOriginal from 'devicons-react/icons/TypescriptOriginal'
-import TailwindcssOriginal from 'devicons-react/icons/TailwindcssOriginal'
-import NodejsOriginal from 'devicons-react/icons/NodejsOriginal'
-import JavascriptOriginal from 'devicons-react/icons/JavascriptOriginal'
-import VitejsOriginal from 'devicons-react/icons/VitejsOriginal'
-import ExpressOriginal from 'devicons-react/icons/ExpressOriginal'
-import MysqlOriginal from 'devicons-react/icons/MysqlOriginal'
-
-const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
-    html: Html5Original,
-    css: Css3Original,
-    react: ReactOriginal,
-    javascript: JavascriptOriginal,
-    typescript: TypescriptOriginal,
-    tailwind: TailwindcssOriginal,
-    vite: VitejsOriginal,
-    nodejs: NodejsOriginal,
-    express: ExpressOriginal,
-    sql: MysqlOriginal
-}
+import { stackIcons } from './stackIcons.ts'
+import { ProjectLinks } from './ProjectLinks.tsx'
 
 type ProjectDetailsProps = {
     project: Projects
@@ -40,7 +18,12 @@ export function ProjectDetails({ project, detail }: ProjectDetailsProps) {
 
     return (
         <>
-            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-t-2xl border-b border-[var(--color-border)]">
+            <div
+                role="region"
+                aria-roledescription="carousel"
+                aria-label={`${project.name} screenshots`}
+                className="relative w-full aspect-[4/3] overflow-hidden rounded-t-2xl border-b border-[var(--color-border)]"
+            >
                 <img
                     src={images[imgIndex]}
                     alt=""
@@ -49,18 +32,18 @@ export function ProjectDetails({ project, detail }: ProjectDetailsProps) {
                 />
                 <img
                     src={images[imgIndex]}
-                    alt={`${project.name} screenshot ${imgIndex + 1}`}
+                    alt={`${project.name} — image ${imgIndex + 1} of ${images.length}`}
                     className="relative z-10 w-full h-full object-contain object-center"
                 />
                 {images.length > 1 && (
                     <>
-                        <button onClick={prevImage} className="absolute z-20 left-2 top-1/2 -translate-y-1/2 bg-black/60 rounded-full p-1 text-[var(--color-text)] hover:bg-black/80 transition-colors">
-                            <ChevronLeft size={20} />
+                        <button type="button" onClick={prevImage} aria-label="Previous image" className="absolute z-20 left-2 top-1/2 -translate-y-1/2 bg-black/60 rounded-full p-1 text-[var(--color-text)] hover:bg-black/80 transition-colors">
+                            <ChevronLeft size={20} aria-hidden="true" />
                         </button>
-                        <button onClick={nextImage} className="absolute z-20 right-2 top-1/2 -translate-y-1/2 bg-black/60 rounded-full p-1 text-[var(--color-text)] hover:bg-black/80 transition-colors">
-                            <ChevronRight size={20} />
+                        <button type="button" onClick={nextImage} aria-label="Next image" className="absolute z-20 right-2 top-1/2 -translate-y-1/2 bg-black/60 rounded-full p-1 text-[var(--color-text)] hover:bg-black/80 transition-colors">
+                            <ChevronRight size={20} aria-hidden="true" />
                         </button>
-                        <div className="absolute z-20 bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                        <div aria-hidden="true" className="absolute z-20 bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
                             {images.map((_, i) => (
                                 <span key={i} className={`w-1.5 h-1.5 rounded-full ${i === imgIndex ? 'bg-[var(--color-text)]' : 'bg-[var(--color-muted)]'}`} />
                             ))}
@@ -71,7 +54,7 @@ export function ProjectDetails({ project, detail }: ProjectDetailsProps) {
 
             <div className="flex flex-col gap-4 p-5">
                 <div>
-                    <h2 className="text-[19px] font-bold text-[var(--color-white)]">{project.name}</h2>
+                    <h2 id="project-modal-title" className="text-[19px] font-bold text-[var(--color-white)]">{project.name}</h2>
                     <span className="text-xs font-mono uppercase tracking-widest text-[var(--color-muted)]">Status: {project.status}</span>
                 </div>
 
@@ -117,10 +100,10 @@ export function ProjectDetails({ project, detail }: ProjectDetailsProps) {
                     <h3 className="text-xs font-mono uppercase tracking-widest text-[var(--color-purple)]">Stack</h3>
                     <div className="flex gap-3 flex-wrap">
                         {project.stack.map((item) => {
-                            const Icon = iconMap[item.icon]
+                            const Icon = stackIcons[item.icon]
                             return (
                                 <div key={item.name} className="flex items-center gap-1">
-                                    {Icon && <Icon size={18} />}
+                                    {Icon && <Icon size={18} aria-hidden="true" />}
                                     <span className="text-xs font-mono text-[var(--color-muted)]">{item.name}</span>
                                 </div>
                             )
@@ -128,29 +111,14 @@ export function ProjectDetails({ project, detail }: ProjectDetailsProps) {
                     </div>
                 </div>
 
-                <div className="flex gap-3 pt-2">
-                    {project.liveUrl ? (
-                        <a href={project.liveUrl} target="_blank" className="btn-outline inline-flex items-center justify-center min-w-[80px] h-[40px]">
-                            <span>Live</span>
-                        </a>
-                    ) : project.lockedReason ? (
-                        <button type="button" onClick={() => alert(project.lockedReason)} className="btn-outline inline-flex items-center justify-center gap-1 min-w-[80px] h-[40px] opacity-50">
-                            <Lock size={14} />
-                            <span>Live</span>
-                        </button>
-                    ) : null}
-
-                    {project.githubUrl ? (
-                        <a href={project.githubUrl} target="_blank" className="btn-outline inline-flex items-center justify-center min-w-[80px] h-[40px]">
-                            <span>GitHub</span>
-                        </a>
-                    ) : project.lockedReason ? (
-                        <button type="button" onClick={() => alert(project.lockedReason)} className="btn-outline inline-flex items-center justify-center gap-1 min-w-[80px] h-[40px] opacity-50">
-                            <Lock size={14} />
-                            <span>GitHub</span>
-                        </button>
-                    ) : null}
-                </div>
+                <ProjectLinks
+                    name={project.name}
+                    liveUrl={project.liveUrl}
+                    githubUrl={project.githubUrl}
+                    lockedReason={project.lockedReason}
+                    align="start"
+                    className="pt-2"
+                />
             </div>
         </>
     )

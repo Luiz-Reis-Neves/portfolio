@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { prefersReducedMotion } from '../../utils/motion.ts'
 gsap.registerPlugin(ScrollTrigger)
 
 const skills = [
@@ -45,7 +46,9 @@ export function TerminalSkills({ onComplete }: Props) {
             el.innerHTML = all.join('\n') + '<span class="cursor-blink">█</span>'
         }
 
-        const wait = (ms: number) => new Promise<void>(r => setTimeout(r, ms))
+        // movimento reduzido — sem pausas, o terminal aparece praticamente completo de uma vez
+        const reduced = prefersReducedMotion()
+        const wait = (ms: number) => new Promise<void>(r => setTimeout(r, reduced ? 0 : ms))
 
         const typeText = async (prefix: string, text: string, speed = 60) => {
             let typed = ''

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
+import { prefersReducedMotion } from '../../utils/motion.ts'
 
 const words = ['Engineer.', 'Developer.', 'Architect.']
 
@@ -8,7 +9,8 @@ export function RotatingWord() {
   const textRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-  if (!textRef.current) return
+  // movimento reduzido — mantém a primeira palavra fixa
+  if (!textRef.current || prefersReducedMotion()) return
   
   const letters = textRef.current.querySelectorAll('.letter')
   

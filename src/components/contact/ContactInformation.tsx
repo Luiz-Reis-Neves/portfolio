@@ -5,7 +5,7 @@ export function ContactInformation() {
     return (
         <div className="w-[100%] p-5 mt-4 flex flex-col gap-3">
             <div>
-                <h1 className=' text-[var(--color-white)] text-[20px]'>Contact Information</h1>
+                <h3 className=' text-[var(--color-white)] text-[20px]'>Contact Information</h3>
                 <p className='text-[14px] mt-[10px]'>Fill up the form and I'll get back to you as soon as possible.</p>
             </div>
             <div className=' flex flex-col gap-5'>
@@ -25,13 +25,13 @@ export function ContactInformation() {
                 </div>
             </div>
             <div>
-                <div className='text-[var(--color-white)] text-[20px] mt-[30px]'>Connect with me</div>
+                <h3 className='text-[var(--color-white)] text-[20px] mt-[30px]'>Connect with me</h3>
                 <div className='flex gap-3'>
-                    <a href="https://github.com/Luiz-Reis-Neves" target="_blank" rel="noopener noreferrer" className="brightness-0 invert">
-                        <GithubOriginal size={25} />
+                    <a href="https://github.com/Luiz-Reis-Neves" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)" className="brightness-0 invert">
+                        <GithubOriginal size={25} aria-hidden="true" />
                     </a>
-                    <a href="https://www.linkedin.com/in/luiz-reis-neves" target="_blank" rel="noopener noreferrer"><LinkedinOriginal size={25} /></a>
-                    <a href="mailto:luizreisneves@outlook.com"><div><Mail size={25} color="var(--color-white)" /></div></a>
+                    <a href="https://www.linkedin.com/in/luiz-reis-neves" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)"><LinkedinOriginal size={25} aria-hidden="true" /></a>
+                    <a href="mailto:luizreisneves@outlook.com" aria-label="Send me an email"><Mail size={25} color="var(--color-white)" aria-hidden="true" /></a>
                 </div>
             </div>
         </div>

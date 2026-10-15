@@ -28,13 +28,13 @@ export function Apresentation() {
 
     return (
         <div className=" hero-text-scrim relative w-full flex flex-1 flex-col justify-center gap-6 pt-0 px-0 sm:w-[90%] lg:w-[50%] lg:gap-4 lg:pt-0 lg:px-0">
-            <h1 className=" text-white/90 font-mono text-xs uppercase tracking-widest">// I'm</h1>
+            <p className=" text-white/90 font-mono text-xs uppercase tracking-widest">// I'm</p>
             <h1 ref={ref1} className="font-[family-name:var(--font-display)] text-6xl md:text-7xl lg:text-[96px] leading-[0.95] text-[#00ff88] [text-shadow:0_0_24px_rgba(0,255,136,0.45)]">
                 Luiz Reis Neves
             </h1>
-            <h2 ref={ref2} className="font-[family-name:var(--font-body)] text-2xl font-normal text-white/90">
+            <p ref={ref2} className="font-[family-name:var(--font-body)] text-2xl font-normal text-white/90">
                 Fullstack Developer
-            </h2>
+            </p>
             <p ref={ref3} className="font-[family-name:var(--font-body)] text-base leading-[1.75] text-neutral-300 max-w-md">
                 A professional <RotatingWord /> crafting seamless experiences from frontend to backend.
             </p>

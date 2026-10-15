@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
+import { prefersReducedMotion } from '../../utils/motion.ts'
 
 type Drop = {
     y: number
@@ -26,6 +27,7 @@ export function MatrixRain() {
         const ctx = canvas.getContext('2d')
         if (!ctx) return
 
+        const reduced = prefersReducedMotion()
         const drops: Drop[] = []
         const tweens: gsap.core.Tween[] = []
         let speedsRandomized = false
@@ -45,9 +47,15 @@ export function MatrixRain() {
             const columns = Math.floor(canvas.width / fontSize)
             while (drops.length < columns) drops.push(createDrop())
             drops.length = columns
-        }
 
-        resize()
+            // movimento reduzido — um único quadro estático, com as colunas espalhadas pela tela
+            if (reduced) {
+                drops.forEach(drop => {
+                    drop.y = Math.random() * (canvas.height / fontSize + trailLength)
+                })
+                draw()
+            }
+        }
 
         // depois de 3 segundos, dá velocidade aleatória pra cada coluna
         const timeout = setTimeout(() => {
@@ -103,6 +111,8 @@ export function MatrixRain() {
             }
         }
 
+        resize()
+
         // loop com requestAnimationFrame — o navegador pausa sozinho em abas em segundo plano
         let rafId = 0
         let lastFrame = 0
@@ -125,6 +135,7 @@ export function MatrixRain() {
 
         // só anima enquanto a Hero estiver visível na tela
         const visibilityObserver = new IntersectionObserver(([entry]) => {
+            if (reduced) return
             if (entry.isIntersecting) start()
             else stop()
         })

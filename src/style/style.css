@@ -374,7 +374,7 @@ body {
     transition: transform 0.5s ease-out;
 }
 
-.project-img-wrapper:hover img {
+.project-card:hover .project-img-wrapper img {
     transform: scale(1.05);
 }
 
@@ -387,6 +387,57 @@ body {
     border-radius: inherit;
 }
 
-.project-img-wrapper:hover .project-img-overlay {
+.project-card:hover .project-img-overlay {
     opacity: 0.08;
+}
+
+/* ============================================
+   ACESSIBILIDADE — MOVIMENTO REDUZIDO
+   Respeita a opção "reduzir movimento" do
+   sistema: desliga animações infinitas e o
+   carrossel vira uma grade estática
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .cursor-blink,
+  .nav-blink:hover,
+  .nav-blink-active,
+  .border-glow,
+  .card-float,
+  .animate-fade-in,
+  .carousel-enter {
+    animation: none;
+  }
+
+  .card-hover:hover,
+  .project-card:hover,
+  .project-card:hover .project-img-wrapper img,
+  .carousel-card:hover .carousel-icon {
+    transform: none;
+  }
+
+  /* carrossel parado, quebrando linha, sem os itens duplicados do loop */
+  .carousel-track-left,
+  .carousel-track-right {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto !important;
+  }
+
+  .carousel-dup {
+    display: none !important;
+  }
+
+  .carousel-fade::before,
+  .carousel-fade::after {
+    display: none;
+  }
+
+  /* sem o piscar, o link ativo da navbar é indicado pela cor */
+  .nav-blink-active {
+    color: var(--color-white);
+  }
 }

@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-
-gsap.registerPlugin()
+import { prefersReducedMotion } from '../../utils/motion.ts'
 
 const phase1 = 'Wake up...'
 const phase2 = 'The Matrix has you.'
@@ -61,8 +60,13 @@ export function Terminal() {
             })
         }
 
-        terminal.addEventListener('mousemove', handleMouseMove)
-        terminal.addEventListener('mouseleave', handleMouseLeave)
+        const reduced = prefersReducedMotion()
+
+        // efeito 3D só quando o usuário não pediu movimento reduzido
+        if (!reduced) {
+            terminal.addEventListener('mousemove', handleMouseMove)
+            terminal.addEventListener('mouseleave', handleMouseLeave)
+        }
 
 
         if (!textRef.current) return
@@ -97,6 +101,12 @@ export function Terminal() {
             new Promise((resolve) => setTimeout(resolve, ms))
 
         const run = async () => {
+            // movimento reduzido — mostra direto o texto final, sem digitação
+            if (reduced) {
+                el.innerHTML = phase3 + '<span class="cursor-blink">█</span>'
+                return
+            }
+
             await wait(800)
             await type(phase1)
             await wait(2000)

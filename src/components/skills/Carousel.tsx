@@ -56,7 +56,9 @@ export function Carousel() {
                     {[...row1, ...row1].map((skill, index) => (
                         <div
                             key={index}
-                            className="carousel-card flex items-center gap-2 bg-white/5 rounded-xl p-7 min-w-max cursor-pointer"
+                            // a segunda metade é cópia só para o loop visual — escondida de leitores de tela
+                            aria-hidden={index >= row1.length || undefined}
+                            className={`carousel-card flex items-center gap-2 bg-white/5 rounded-xl p-7 min-w-max cursor-pointer ${index >= row1.length ? 'carousel-dup' : ''}`}
                         >
                             <div className="carousel-icon">
                                 {skill.icon}
@@ -84,7 +86,9 @@ export function Carousel() {
                     {[...row2, ...row2].map((skill, index) => (
                         <div
                             key={index}
-                            className="carousel-card flex items-center gap-2 bg-white/5 rounded-xl p-7 min-w-max cursor-pointer"
+                            // a segunda metade é cópia só para o loop visual — escondida de leitores de tela
+                            aria-hidden={index >= row2.length || undefined}
+                            className={`carousel-card flex items-center gap-2 bg-white/5 rounded-xl p-7 min-w-max cursor-pointer ${index >= row2.length ? 'carousel-dup' : ''}`}
                         >
                             <div className="carousel-icon">
                                 {skill.icon}
