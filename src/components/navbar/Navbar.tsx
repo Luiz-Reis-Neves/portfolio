@@ -23,7 +23,9 @@ export function Navbar() {
           }
         })
       },
-      { threshold: 0.3 }
+      // encolhe a área observada até uma linha no meio da tela —
+      // a seção ativa é sempre a única que está cruzando essa linha
+      { rootMargin: '-50% 0px -50% 0px' }
     )
 
     navLinks.forEach((link) => {
