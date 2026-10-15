@@ -1,6 +1,22 @@
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 
+type Drop = {
+    y: number
+    speed: number
+    chars: string[]
+}
+
+const fontSize = 16
+const trailLength = 20
+const frameInterval = 50 // ms entre frames (~20 fps) — controla a velocidade da chuva
+
+// helper para sortear caractere
+const randomChar = () =>
+    String.fromCharCode(0x30A0 + Math.random() * 96)
+
+const randomSpeed = () => 0.3 + Math.random() * 0.4
+
 export function MatrixRain() {
     const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -10,31 +26,38 @@ export function MatrixRain() {
         const ctx = canvas.getContext('2d')
         if (!ctx) return
 
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
+        const drops: Drop[] = []
+        const tweens: gsap.core.Tween[] = []
+        let speedsRandomized = false
 
-        const fontSize = 16
-        const columns = Math.floor(canvas.width / fontSize)
-        const trailLength = 20
-
-        // helper para sortear caractere
-        const randomChar = () =>
-            String.fromCharCode(0x30A0 + Math.random() * 96)
-
-        const drops = Array.from({ length: columns }, () => ({
+        const createDrop = (): Drop => ({
             y: 0,
-            speed: 0.5,  // todas iguais no início
+            // antes dos 3 segundos todas caem juntas; colunas criadas depois já nascem com velocidade aleatória
+            speed: speedsRandomized ? randomSpeed() : 0.5,
             chars: Array.from({ length: trailLength }, randomChar),
-        }))
+        })
+
+        // ajusta o canvas ao tamanho real da seção e adiciona/remove colunas
+        const resize = () => {
+            canvas.width = canvas.clientWidth
+            canvas.height = canvas.clientHeight
+
+            const columns = Math.floor(canvas.width / fontSize)
+            while (drops.length < columns) drops.push(createDrop())
+            drops.length = columns
+        }
+
+        resize()
 
         // depois de 3 segundos, dá velocidade aleatória pra cada coluna
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
+            speedsRandomized = true
             drops.forEach(drop => {
-                gsap.to(drop, {
-                    speed: 0.3 + Math.random() * 0.4,
+                tweens.push(gsap.to(drop, {
+                    speed: randomSpeed(),
                     duration: 2,
                     ease: 'power2.out',
-                })
+                }))
             })
         }, 3000)
 
@@ -75,13 +98,49 @@ export function MatrixRain() {
 
                 if ((drop.y - trailLength) * fontSize > canvas.height) {
                     drop.y = 0
-                    drop.speed = 0.3 + Math.random() * 0.4
+                    drop.speed = randomSpeed()
                 }
             }
         }
 
-        const interval = setInterval(draw, 50)
-        return () => clearInterval(interval)
+        // loop com requestAnimationFrame — o navegador pausa sozinho em abas em segundo plano
+        let rafId = 0
+        let lastFrame = 0
+
+        const loop = (time: number) => {
+            rafId = requestAnimationFrame(loop)
+            if (time - lastFrame < frameInterval) return
+            lastFrame = time
+            draw()
+        }
+
+        const start = () => {
+            if (!rafId) rafId = requestAnimationFrame(loop)
+        }
+
+        const stop = () => {
+            cancelAnimationFrame(rafId)
+            rafId = 0
+        }
+
+        // só anima enquanto a Hero estiver visível na tela
+        const visibilityObserver = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) start()
+            else stop()
+        })
+        visibilityObserver.observe(canvas)
+
+        // recalcula as colunas quando a seção muda de tamanho (resize, rotação do celular)
+        const resizeObserver = new ResizeObserver(resize)
+        resizeObserver.observe(canvas)
+
+        return () => {
+            stop()
+            clearTimeout(timeout)
+            tweens.forEach(tween => tween.kill())
+            visibilityObserver.disconnect()
+            resizeObserver.disconnect()
+        }
     }, [])
 
     return (
