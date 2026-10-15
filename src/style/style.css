@@ -53,6 +53,9 @@ body {
   --color-purple: #a78bfa;   /* destaque — palavra animada */
   --color-white: #ffffff;    /* texto secundário */
   --color-muted: #6b7280;    /* texto discreto */
+
+  /* Destaque */
+  --color-green: #00ff88;    /* verde neon — terminal, foco de inputs, overlays */
 }
 
 /* ============================================
