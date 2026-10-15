@@ -27,10 +27,10 @@ export function ContactInformation() {
             <div>
                 <div className='text-[var(--color-white)] text-[20px] mt-[30px]'>Connect with me</div>
                 <div className='flex gap-3'>
-                    <a href="https://github.com/Luiz-Reis-Neves" className="brightness-0 invert">
+                    <a href="https://github.com/Luiz-Reis-Neves" target="_blank" rel="noopener noreferrer" className="brightness-0 invert">
                         <GithubOriginal size={25} />
                     </a>
-                    <a href="www.linkedin.com/in/luiz-reis-neves"><LinkedinOriginal size={25} /></a>
+                    <a href="https://www.linkedin.com/in/luiz-reis-neves" target="_blank" rel="noopener noreferrer"><LinkedinOriginal size={25} /></a>
                     <a href="mailto:luizreisneves@outlook.com"><div><Mail size={25} color="var(--color-white)" /></div></a>
                 </div>
             </div>
