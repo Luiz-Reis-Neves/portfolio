@@ -8,12 +8,16 @@ function App() {
 
   return (
     <>
-      <Hero />
       <Navbar />
-      <AboutMe />
-      <Skills />
-      <Projects />
-      <Contact />
+      {/* overflow-x-clip: elementos começam deslocados ±40px antes das animações de entrada (GSAP).
+          O corte precisa ficar num wrapper — navegadores mobile ignoram overflow no <html> */}
+      <main className="overflow-x-clip">
+        <Hero />
+        <AboutMe />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
     </>
   )
 }

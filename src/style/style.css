@@ -19,9 +19,6 @@
 
 html {
     scroll-behavior: smooth;
-    /* elementos começam deslocados ±40px antes das animações de entrada (GSAP) —
-       sem isso, a página "arrasta" para o lado no celular */
-    overflow-x: clip;
 }
 
 /* ============================================
