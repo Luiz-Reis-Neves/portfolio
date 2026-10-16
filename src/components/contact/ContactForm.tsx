@@ -33,7 +33,7 @@ export function ContactForm() {
         <form ref={formRef} onSubmit={handleSubmit} className="w-[100%] flex flex-col gap-4 mt-[45px]">
 
             {/* Nome e Email lado a lado */}
-            <div className="w-full flex gap-4">
+            <div className="w-full flex flex-col gap-4 lg:flex-row">
                 <div className="flex flex-col gap-1 flex-1 min-w-0">
                     <label className="text-[var(--color-muted)] font-mono text-xs uppercase tracking-widest">Your Name</label>
                     <input

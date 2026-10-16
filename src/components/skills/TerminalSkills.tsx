@@ -113,10 +113,10 @@ export function TerminalSkills({ onComplete }: Props) {
     }, [])
 
     return (
-        <div className="w-full h-auto sm:w-[50%] sm:h-[600px] lg:w-[40%] lg:h-[600px] p-6">
+        <div className="w-full h-auto lg:w-[40%] lg:h-[600px] p-6">
             <div
                 ref={containerRef}
-                className="text-[var(--color-green)] font-mono text-sm leading-loose whitespace-pre-wrap break-words sm:ml-[30px]"
+                className="text-[var(--color-green)] font-mono text-sm leading-loose whitespace-pre-wrap break-words"
             >
                 █
             </div>

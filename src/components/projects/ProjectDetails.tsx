@@ -58,7 +58,7 @@ export function ProjectDetails({ project, detail }: ProjectDetailsProps) {
                     <span className="text-xs font-mono uppercase tracking-widest text-[var(--color-muted)]">Status: {project.status}</span>
                 </div>
 
-                <p className="text-sm text-justify text-[var(--color-text)] leading-relaxed">{project.description}</p>
+                <p className="text-sm text-left sm:text-justify text-[var(--color-text)] leading-relaxed">{project.description}</p>
 
                 {detail?.sections.map((section, i) => (
                     <div key={i} className="flex flex-col gap-2">
@@ -80,7 +80,7 @@ export function ProjectDetails({ project, detail }: ProjectDetailsProps) {
                             />
                         )}
                         {section.text && (
-                            <p className="text-sm text-justify text-[var(--color-text)] leading-relaxed">
+                            <p className="text-sm text-left sm:text-justify text-[var(--color-text)] leading-relaxed">
                                 {section.text}
                             </p>
                         )}

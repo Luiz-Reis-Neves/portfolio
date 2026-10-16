@@ -4,7 +4,7 @@ export function AboutMe() {
     return (
         <div id="AboutMe" className="min-h-screen w-full">
             <div className="max-w-6xl mx-auto">
-                <div className="w-[100%] h-auto flex flex-col gap-1 p-4 sm:items-center lg:flex-row lg:p-0">
+                <div className="w-[100%] h-auto flex flex-col gap-1 p-4 sm:items-center lg:flex-row lg:py-0 xl:px-0">
                     <Photo />
                     <Resume />
                 </div>

@@ -32,16 +32,16 @@ export function Resume() {
         <div className="w-[100%] h-[60%] flex flex-col gap-3 sm:justify-center sm:gap-5 sm:items-center lg:w-[60%] lg:h-screen lg:gap-5">
             <div ref={ref1} className="w-[100%] h-[auto] sm:w-[90%]">
             <div className="flex items-center">
-                <User size={40} aria-hidden="true" />
+                <User size={40} aria-hidden="true" className="shrink-0" />
                 <div className="flex flex-col">
                     <h2 className="text-[var(--color-white)]">About Me</h2>
                     <p className="text-[var(--color-white)] text-[11px]">Follow the white rabbit.</p>
                 </div>
             </div>
-                <p className="text-7xl flex text-center font-[family-name:var(--font-display)] sm:text-6xl sm:text-end">Fullstack Developer</p>
+                <p className="text-5xl flex text-center font-[family-name:var(--font-display)] sm:text-6xl sm:text-end">Fullstack Developer</p>
             </div>
             <div ref={ref2} className="w-[100%] h-auto flex justify-center sm:w-[90%] sm:h-[auto]">
-                <p className="text-justify">I'm Luiz Reis Neves, a Fullstack developer in constant evolution,
+                <p className="text-left sm:text-justify">I'm Luiz Reis Neves, a Fullstack developer in constant evolution,
                     focused on building modern and functional interfaces with React and TypeScript.
                     I currently develop real projects applying what I learn — turning
                     code into solutions that solve concrete problems.

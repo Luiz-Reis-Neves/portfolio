@@ -78,7 +78,7 @@ export function ProjectCards({ image, name, description, stack, status, liveUrl,
                 </h3>
 
                 {/* Descrição */}
-                <p className='text-[11px] text-justify'>
+                <p className='text-[11px] text-left sm:text-justify'>
                     {description}
                 </p>
 

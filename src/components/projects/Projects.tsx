@@ -12,7 +12,7 @@ export function Projects() {
     const selectedDetail = projectsDetails.find((d) => d.id === selectedId)
     return (
         <div id="Projects" className="w-full min-h-screen">
-            <div className="max-w-6xl mx-auto min-h-screen flex flex-col gap-4 sm:px-2">
+            <div className="max-w-6xl mx-auto min-h-screen flex flex-col gap-4 px-4 xl:px-0">
                 <TitleProjects />
                 <div className="w-[100%] h-auto grid grid-cols-1  p-2 gap-4 justify-items-center sm:grid-cols-2 lg:grid-cols-2">
                     {projects.map((items) => (
