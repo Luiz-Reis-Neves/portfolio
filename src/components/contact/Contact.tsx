@@ -58,8 +58,9 @@ export function Contact() {
 
     return (
         <div id="Contact" className="w-full min-h-screen">
-            <div className="max-w-6xl mx-auto min-h-screen flex flex-col gap-4 px-4 xl:px-0">
-                <div className="w-[100%] flex flex-col min-h-screen">
+            {/* justify-center: centraliza o conteúdo na tela; pb extra evita sobreposição com a navbar fixa no rodapé */}
+            <div className="max-w-6xl mx-auto min-h-screen flex flex-col justify-center gap-4 px-4 pt-16 pb-28 xl:px-0">
+                <div className="w-[100%] flex flex-col">
                     <div ref={titleRef} className="w-full">
                         <TitleContact />
                     </div>
